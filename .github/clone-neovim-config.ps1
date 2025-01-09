@@ -59,6 +59,6 @@ if (!(Get-Command nvim -ErrorAction SilentlyContinue)) {
 
 Write-Host "Dang cap nhat cai dat Windows Terminal..."
 Copy-Item -Path "$env:LOCALAPPDATA\nvim\.github\setting.json" -Destination "$env:LOCALAPPDATA\Microsoft\Windows Terminal\settings.json"
-reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\cmd.exe" /ve /d "C:\Users\$env:USERNAME\scoop\apps\windows-terminal\current\WindowsTerminal.exe" /f
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\cmd.exe" /ve /d "C:\Users\%USERNAME%\scoop\apps\windows-terminal\current\wt.exe" /f
 Copy-Item -Path "$env:LOCALAPPDATA\nvim\.github\setting.json" -Destination "C:\Users\$env:USERNAME\scoop\apps\windows-terminal\current\settings\settings.json"
 Write-Host "Cai dat hoan tat!"
