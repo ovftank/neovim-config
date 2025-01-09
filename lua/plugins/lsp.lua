@@ -57,11 +57,11 @@ return {
             local servers = {
                 "lua_ls",
                 "pyright",
-                "pylsp",
                 "ts_ls",
                 "html",
                 "cssls",
-                "jsonls"
+                "jsonls",
+                "emmet_language_server"
             }
 
             for _, server in ipairs(servers) do
@@ -86,16 +86,42 @@ return {
                     }
                 end
 
-                if server == "pylsp" then
+                if server == "pyright" then
                     opts.settings = {
-                        pylsp = {
-                            plugins = {
-                                pycodestyle = { enabled = false },
-                                autopep8 = { enabled = false },
-                                yapf = { enabled = false },
-                                black = { enabled = true },
+                        python = {
+                            analysis = {
+                                autoSearchPaths = true,
+                                diagnosticMode = "openFilesOnly",
+                                useLibraryCodeForTypes = true,
+                                typeCheckingMode = "basic"
                             }
                         }
+                    }
+                end
+
+                if server == "ts_ls" then
+                    opts.init_options = {
+                        hostInfo = "neovim"
+                    }
+                    opts.filetypes = {
+                        "javascript",
+                        "javascriptreact",
+                        "javascript.jsx",
+                        "typescript",
+                        "typescriptreact",
+                        "typescript.tsx"
+                    }
+                end
+
+                if server == "emmet_language_server" then
+                    opts.filetypes = {
+                        "css",
+                        "html",
+                        "javascriptreact",
+                        "less",
+                        "sass",
+                        "scss",
+                        "typescriptreact"
                     }
                 end
 
