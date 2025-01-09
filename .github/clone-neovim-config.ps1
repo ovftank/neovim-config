@@ -41,7 +41,7 @@ scoop bucket add extras
 scoop bucket add nerd-fonts
 
 Write-Host "Dang cai dat JetBrains Mono Nerd Font..."
-scoop install nerd-fonts/JetBrains-Mono
+scoop install nerd-fonts/JetBrainsMono-NF-Mono
 
 if (!(Get-Command wt -ErrorAction SilentlyContinue)) {
     Write-Host "Dang cai dat Windows Terminal..."
