@@ -46,10 +46,10 @@ return {
                 vim.keymap.set('n', keymaps.diagnostic_prev, vim.diagnostic.goto_prev, opts)
                 vim.keymap.set('n', keymaps.diagnostic_line, vim.diagnostic.open_float, opts)
                 vim.keymap.set('n', keymaps.format, function()
-                    vim.lsp.buf.format({ async = true })
+                    vim.lsp.buf.format()
                 end, opts)
                 vim.keymap.set('i', keymaps.format, function()
-                    vim.lsp.buf.format({ async = true })
+                    vim.lsp.buf.format()
                 end, opts)
             end
 

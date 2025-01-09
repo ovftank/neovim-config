@@ -97,7 +97,7 @@ local lsp_keymaps = {
 
 local telescope_keymaps = {
     find_files = "<C-t>",
-    live_grep = "%",
+    live_grep = "<C-T>",
     close = "<esc>"
 }
 
