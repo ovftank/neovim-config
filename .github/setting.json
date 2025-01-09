@@ -320,7 +320,10 @@
             "colorScheme": "Dracula",
             "font": {
                 "face": "JetBrainsMono Nerd Font"
-            }
+            },
+            "opacity": 90,
+            "tabTitle": "Terminal",
+            "useAcrylic": false
         },
         "list": [
             {
