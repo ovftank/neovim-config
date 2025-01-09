@@ -7,6 +7,8 @@ return {
             "HiPhish/rainbow-delimiters.nvim",
         },
         config = function()
+            local colors = require('dracula').colors()
+
             local highlight = {
                 "RainbowDelimiterRed",
                 "RainbowDelimiterYellow",
@@ -19,13 +21,13 @@ return {
 
             local hooks = require("ibl.hooks")
             hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-                vim.api.nvim_set_hl(0, "RainbowDelimiterRed", { fg = "#ff5555" })
-                vim.api.nvim_set_hl(0, "RainbowDelimiterYellow", { fg = "#f1fa8c" })
-                vim.api.nvim_set_hl(0, "RainbowDelimiterBlue", { fg = "#bd93f9" })
-                vim.api.nvim_set_hl(0, "RainbowDelimiterOrange", { fg = "#ffb86c" })
-                vim.api.nvim_set_hl(0, "RainbowDelimiterGreen", { fg = "#50fa7b" })
-                vim.api.nvim_set_hl(0, "RainbowDelimiterViolet", { fg = "#ff79c6" })
-                vim.api.nvim_set_hl(0, "RainbowDelimiterCyan", { fg = "#8be9fd" })
+                vim.api.nvim_set_hl(0, "RainbowDelimiterRed", { fg = colors.red })
+                vim.api.nvim_set_hl(0, "RainbowDelimiterYellow", { fg = colors.yellow })
+                vim.api.nvim_set_hl(0, "RainbowDelimiterBlue", { fg = colors.purple })
+                vim.api.nvim_set_hl(0, "RainbowDelimiterOrange", { fg = colors.orange })
+                vim.api.nvim_set_hl(0, "RainbowDelimiterGreen", { fg = colors.green })
+                vim.api.nvim_set_hl(0, "RainbowDelimiterViolet", { fg = colors.pink })
+                vim.api.nvim_set_hl(0, "RainbowDelimiterCyan", { fg = colors.cyan })
             end)
             vim.g.rainbow_delimiters = { highlight = highlight }
             require("ibl").setup({

@@ -62,7 +62,6 @@ local ts_keymaps = {
         scope_incremental = "<Tab>",
     },
     textobjects = {
-        -- Select
         ["af"] = "@function.outer",
         ["if"] = "@function.inner",
         ["ac"] = "@class.outer",
@@ -91,10 +90,16 @@ local lsp_keymaps = {
     diagnostic_next = "]d",
     diagnostic_prev = "[d",
     diagnostic_line = "gl",
-    format = "<C-o>",
+    format = "<C-I>",
+}
+
+local telescope_keymaps = {
+    { "<C-t>", "<cmd>Telescope find_files<cr>", desc = "Tìm Files" },
+    { "<C-T>", "<cmd>Telescope live_grep<cr>", desc = "Tìm Text" },
 }
 
 return {
     ts_keymaps = ts_keymaps,
-    lsp_keymaps = lsp_keymaps
+    lsp_keymaps = lsp_keymaps,
+    telescope_keymaps = telescope_keymaps,
 }

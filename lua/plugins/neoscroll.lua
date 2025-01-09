@@ -5,7 +5,6 @@ return {
         config = function()
             local neoscroll = require('neoscroll')
 
-            -- Cấu hình cơ bản
             neoscroll.setup({
                 hide_cursor = true,
                 stop_eof = true,
