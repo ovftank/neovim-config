@@ -54,6 +54,8 @@ keymap("v", "<S-Down>", "j", opts)
 keymap("v", "<S-Left>", "h", opts)
 keymap("v", "<S-Right>", "l", opts)
 
+keymap("v", "<BS>", "x", opts)
+
 local ts_keymaps = {
     incremental_selection = {
         init_selection = "<CR>",
@@ -93,36 +95,9 @@ local lsp_keymaps = {
     format = "<C-I>",
 }
 
--- local telescope_keymaps = { {
---     "<C-o>",
---     function()
---         require("telescope.builtin").find_files({
---             initial_mode = "insert",
---             theme = "dropdown",
---             previewer = false,
---             hidden = true,
---             find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
---         })
---     end,
---     desc = "Tìm Files"
--- },
-
---     {
---         "<C-O>",
---         function()
---             require("telescope.builtin").live_grep({
---                 initial_mode = "insert",
---                 theme = "dropdown",
---                 previewer = true,
---             })
---         end,
---         desc = "Tìm Text"
---     },
--- }
-
 local telescope_keymaps = {
     find_files = "<C-t>",
-    live_grep = "<C-T>",
+    live_grep = "%",
     close = "<esc>"
 }
 
