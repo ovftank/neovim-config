@@ -17,17 +17,18 @@
     choco install ripgrep fd fzf mingw luarocks -y
     ~~~
 
-- pynvim
+- pynvim, python-lsp
 
     ~~~bash
     pip install pynvim
+    pip install "python-lsp-server[all]"
     ~~~
 
-- neovim
+- neovim, typescript-language-server
 
     ~~~bash
     pnpm setup
-    pnpm add -g neovim
+    pnpm add -g neovim  typescript-language-server
     ~~~
 
 ## Setup
