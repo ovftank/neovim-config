@@ -16,31 +16,6 @@ return {
                     return vim.fn.winwidth(0) > 80
                 end,
             }
-
-            local language_icons = {
-                lua = '󰢱',
-                python = '󰌠',
-                rust = '󱘗',
-                javascript = '󰌞',
-                typescript = '󰛦',
-                html = '󰌝',
-                css = '󰌜',
-                cpp = '󰙲',
-                c = '󰙱',
-                java = '󰬷',
-                go = '󰟓',
-                markdown = '󰍔',
-                vim = '',
-                bash = '',
-                fish = '',
-                zsh = '',
-                json = '󰘦',
-                yaml = '',
-                toml = '',
-                dockerfile = '󰡨',
-                default = '󰈙',
-            }
-
             local encoding_icons = {
                 ['utf-8'] = '󰉿',
                 ['utf-16'] = '󰘦',
@@ -52,11 +27,6 @@ return {
                 ['iso-8859-1'] = '󰘬',
                 default = '󰘬',
             }
-
-            local function get_file_icon()
-                local extension = vim.fn.expand('%:e')
-                return language_icons[extension] or language_icons.default
-            end
 
             local config = {
                 options = {
@@ -105,8 +75,13 @@ return {
                     },
                     lualine_c = {
                         {
+                            'filetype',
+                            icon_only = true,
+                            colored = true,
+                            padding = { left = 1, right = 0 },
+                        },
+                        {
                             'filename',
-                            icon = get_file_icon(),
                             file_status = true,
                             path = 1,
                             symbols = {
@@ -146,13 +121,6 @@ return {
                             cond = function()
                                 return vim.fn.mode():find("[Vv]") ~= nil
                             end,
-                        },
-                        {
-                            'filetype',
-                            icon_only = true,
-                            separator = '',
-                            padding = { left = 1, right = 0 },
-                            icons_enabled = true,
                         },
                         {
                             'encoding',
