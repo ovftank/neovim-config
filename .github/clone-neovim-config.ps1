@@ -21,3 +21,21 @@ if ($?) {
     Write-Host "Error when cloning repo. Please try again."
     exit 1
 }
+if (Get-Command choco -ErrorAction SilentlyContinue) {
+    Write-Host "Chocolatey is installed."
+    if (Get-Command wt -ErrorAction SilentlyContinue) {
+        Write-Host "Windows Terminal is installed."
+    } else {
+        choco install microsoft-windows-terminal -y
+    }
+    if (Get-Command nvim -ErrorAction SilentlyContinue) {
+        Write-Host "Neovim is installed."
+    } else {
+        choco install neovim -y
+    }
+    regedit /s $env:LOCALAPPDATA\nvim\.github\windows-terminal.reg
+} else {
+    Write-Host "Chocolatey is not installed. Please install Chocolatey first."
+    exit 1
+}
+Copy-Item -Path "$env:LOCALAPPDATA\nvim\.github\setting.json" -Destination "$env:LOCALAPPDATA\Microsoft\Windows Terminal\settings.json"
