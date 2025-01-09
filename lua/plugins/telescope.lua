@@ -35,15 +35,19 @@ return {
                     end,
                 }),
             }
-            for command, key in pairs(telescope_keymaps) do
-                if builtin[command] then
-                    table.insert(keys, {
-                        key,
-                        function()
-                            builtin[command](command_opts[command])
-                        end,
-                        desc = "Telescope " .. command,
-                    })
+            local modes = { "", "n", "v" }
+            for _, mode in ipairs(modes) do
+                for command, key in pairs(telescope_keymaps) do
+                    if builtin[command] then
+                        table.insert(keys, {
+                            key,
+                            function()
+                                builtin[command](command_opts[command])
+                            end,
+                            mode = mode,
+                            desc = "Telescope " .. command,
+                        })
+                    end
                 end
             end
 
@@ -61,6 +65,9 @@ return {
                     layout_strategy = "horizontal",
                     mappings = {
                         i = {
+                            [require("core.keymap").telescope_keymaps.close] = "close",
+                        },
+                        n = {
                             [require("core.keymap").telescope_keymaps.close] = "close",
                         },
                     },

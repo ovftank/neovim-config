@@ -92,12 +92,12 @@ local lsp_keymaps = {
     diagnostic_next = "]d",
     diagnostic_prev = "[d",
     diagnostic_line = "gl",
-    format = "<C-I>",
+    format = "<C-S-i>",
 }
 
 local telescope_keymaps = {
     find_files = "<C-t>",
-    live_grep = "<C-T>",
+    live_grep = "<C-S-t>",
     close = "<esc>"
 }
 
