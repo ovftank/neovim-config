@@ -35,13 +35,16 @@ return {
                     end,
                 }),
             }
-            local modes = { "", "n", "v" }
+            local modes = { "", "n", "v", "i" }
             for _, mode in ipairs(modes) do
                 for command, key in pairs(telescope_keymaps) do
                     if builtin[command] then
                         table.insert(keys, {
                             key,
                             function()
+                                if mode == "i" then
+                                    vim.cmd("stopinsert")
+                                end
                                 builtin[command](command_opts[command])
                             end,
                             mode = mode,
