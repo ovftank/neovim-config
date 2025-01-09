@@ -2,6 +2,9 @@ return {
     {
         "karb94/neoscroll.nvim",
         event = "VeryLazy",
+        dependencies = {
+            "echasnovski/mini.animate"
+        },
         config = function()
             local neoscroll = require('neoscroll')
 

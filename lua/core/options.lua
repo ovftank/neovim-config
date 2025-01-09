@@ -33,17 +33,18 @@ local function setup_options()
     opt.undofile = true
     opt.undodir = vim.fn.stdpath("data") .. "/undodir"
     opt.clipboard = "unnamedplus"
-    opt.mouse = "a"
+    -- opt.mouse = "a"
+    opt.mouse = ""
+    opt.mousemodel = ""
+    opt.mousescroll = "ver:0,hor:0"
+
     opt.splitright = true
     opt.splitbelow = true
-
 
     opt.updatetime = 300
     opt.timeoutlen = 500
 
-
     opt.completeopt = "menuone,noselect"
-
 
     if vim.fn.has('win32') == 1 then
         opt.shell = 'cmd.exe'
