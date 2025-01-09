@@ -64,7 +64,7 @@ return {
                     component_separators = { left = '', right = '' },
                     section_separators = { left = '', right = '' },
                     disabled_filetypes = {
-                        statusline = { "dashboard", "lazy", "alpha" },
+                        statusline = { "lazy", "alpha" },
                         winbar = {},
                     },
                     ignore_focus = {},
@@ -179,9 +179,7 @@ return {
                             cond = conditions.hide_in_width,
                         },
                     },
-                    lualine_z = {
-                        { 'location', icon = '󰍎' },
-                    }
+                    lualine_z = {}
                 },
                 inactive_sections = {
                     lualine_a = {},
