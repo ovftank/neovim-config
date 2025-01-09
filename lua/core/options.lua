@@ -1,6 +1,7 @@
 local function setup_options()
     local opt = vim.opt
 
+    opt.guifont = "JetBrainsMono NF:h10"
 
     opt.encoding = "utf-8"
     opt.fileencoding = "utf-8"
