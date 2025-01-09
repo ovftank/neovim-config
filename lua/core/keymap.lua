@@ -1,6 +1,7 @@
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
+
 keymap("n", "<C-Up>", ":m .-2<CR>==", opts)
 keymap("n", "<C-Down>", ":m .+1<CR>==", opts)
 keymap("v", "<C-Up>", ":m '<-2<CR>gv=gv", opts)
@@ -53,7 +54,6 @@ keymap("v", "<S-Down>", "j", opts)
 keymap("v", "<S-Left>", "h", opts)
 keymap("v", "<S-Right>", "l", opts)
 
-
 local ts_keymaps = {
     incremental_selection = {
         init_selection = "<CR>",
@@ -93,9 +93,37 @@ local lsp_keymaps = {
     format = "<C-I>",
 }
 
+-- local telescope_keymaps = { {
+--     "<C-o>",
+--     function()
+--         require("telescope.builtin").find_files({
+--             initial_mode = "insert",
+--             theme = "dropdown",
+--             previewer = false,
+--             hidden = true,
+--             find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+--         })
+--     end,
+--     desc = "Tìm Files"
+-- },
+
+--     {
+--         "<C-O>",
+--         function()
+--             require("telescope.builtin").live_grep({
+--                 initial_mode = "insert",
+--                 theme = "dropdown",
+--                 previewer = true,
+--             })
+--         end,
+--         desc = "Tìm Text"
+--     },
+-- }
+
 local telescope_keymaps = {
-    { "<C-t>", "<cmd>Telescope find_files<cr>", desc = "Tìm Files" },
-    { "<C-T>", "<cmd>Telescope live_grep<cr>", desc = "Tìm Text" },
+    find_files = "<C-t>",
+    live_grep = "<C-T>",
+    close = "<esc>"
 }
 
 return {

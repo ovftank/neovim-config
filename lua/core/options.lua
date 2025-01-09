@@ -4,7 +4,6 @@ local function setup_options()
     opt.encoding = "utf-8"
     opt.fileencoding = "utf-8"
 
-
     opt.number = true
     opt.relativenumber = true
     opt.termguicolors = true

@@ -12,7 +12,43 @@ return {
                 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build && copy build\\libfzf.dll lua\\',
             },
         },
-        keys = require("core.keymap").telescope_keymaps,
+        keys = function()
+            local keys = {}
+            local telescope_keymaps = require("core.keymap").telescope_keymaps
+            local builtin = require("telescope.builtin")
+
+            local default_opts = {
+                initial_mode = "insert",
+                theme = "dropdown",
+            }
+
+            local command_opts = {
+                find_files = vim.tbl_extend("force", default_opts, {
+                    previewer = false,
+                    hidden = true,
+                    find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*", "--glob", "!**/node_modules/*" },
+                }),
+                live_grep = vim.tbl_extend("force", default_opts, {
+                    previewer = true,
+                    additional_args = function()
+                        return { "--glob", "!**/node_modules/*" }
+                    end,
+                }),
+            }
+            for command, key in pairs(telescope_keymaps) do
+                if builtin[command] then
+                    table.insert(keys, {
+                        key,
+                        function()
+                            builtin[command](command_opts[command])
+                        end,
+                        desc = "Telescope " .. command,
+                    })
+                end
+            end
+
+            return keys
+        end,
         config = function()
             local telescope = require("telescope")
             telescope.setup({
@@ -23,6 +59,11 @@ return {
                     selection_strategy = "reset",
                     sorting_strategy = "ascending",
                     layout_strategy = "horizontal",
+                    mappings = {
+                        i = {
+                            [require("core.keymap").telescope_keymaps.close] = "close",
+                        },
+                    },
                     layout_config = {
                         horizontal = {
                             prompt_position = "top",
@@ -35,30 +76,6 @@ return {
                         width = 0.87,
                         height = 0.80,
                         preview_cutoff = 120,
-                    },
-                },
-                pickers = {
-                    find_files = {
-                        theme = "dropdown",
-                        previewer = false,
-                        hidden = true,
-                        find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
-                    },
-                    live_grep = {
-                        theme = "dropdown",
-                        previewer = true,
-                    },
-                    buffers = {
-                        theme = "dropdown",
-                        previewer = false,
-                        initial_mode = "normal",
-                        sort_lastused = true,
-                        sort_mru = true,
-                    },
-                    oldfiles = {
-                        theme = "dropdown",
-                        previewer = false,
-                        sort_lastused = true,
                     },
                 },
                 extensions = {
