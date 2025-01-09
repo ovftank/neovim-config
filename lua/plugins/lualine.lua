@@ -6,6 +6,8 @@ return {
             'nvim-tree/nvim-web-devicons'
         },
         config = function()
+            vim.opt.showmode = false
+
             local conditions = {
                 buffer_not_empty = function()
                     return vim.fn.empty(vim.fn.expand('%:t')) ~= 1
@@ -38,6 +40,7 @@ return {
                 dockerfile = '󰡨',
                 default = '󰈙',
             }
+
             local encoding_icons = {
                 ['utf-8'] = '󰉿',
                 ['utf-16'] = '󰘦',
@@ -178,38 +181,6 @@ return {
                     },
                     lualine_z = {
                         { 'location', icon = '󰍎' },
-                    }
-                },
-                tabline = {
-                    lualine_a = {
-                        {
-                            'buffers',
-                            show_filename_only = true,
-                            hide_filename_extension = false,
-                            show_modified_status = true,
-                            mode = 0,
-                            max_length = vim.o.columns * 2 / 3,
-                            symbols = {
-                                modified = ' ●',
-                                alternate_file = '#',
-                                directory = '',
-                            },
-                        }
-                    },
-                    lualine_b = {},
-                    lualine_c = {},
-                    lualine_x = {},
-                    lualine_y = {},
-                    lualine_z = {
-                        {
-                            'tabs',
-                            max_length = vim.o.columns / 3,
-                            mode = 0,
-                            tabs_color = {
-                                active = 'lualine_a_normal',
-                                inactive = 'lualine_b_normal',
-                            },
-                        }
                     }
                 },
                 inactive_sections = {
