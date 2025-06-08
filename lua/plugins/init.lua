@@ -1,4 +1,5 @@
 return {
+    require("plugins.augment"),
     require("plugins.autopairs"),
     require("plugins.barbar"),
     require("plugins.cmp"),

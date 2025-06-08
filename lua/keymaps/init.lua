@@ -1,3 +1,4 @@
+require("keymaps.augment")
 require("keymaps.basic")
 require("keymaps.telescope")
 require("keymaps.lsp")
