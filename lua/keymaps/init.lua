@@ -1,0 +1,7 @@
+require("keymaps.basic")
+require("keymaps.telescope")
+require("keymaps.lsp")
+require("keymaps.cmp")
+require("keymaps.neo-tree")
+require("keymaps.barbar")
+require("keymaps.toggleterm")

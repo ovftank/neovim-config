@@ -1,0 +1,31 @@
+{
+  "runtime.version": "LuaJIT",
+  "runtime.path": [
+    "?.lua",
+    "?/init.lua",
+    "C:/tools/neovim/nvim-win64/share/nvim/runtime/lua/vim/options.lua",
+    "C:/tools/neovim/nvim-win64/share/nvim/runtime/lua/vim/_options.lua"
+  ],
+  "diagnostics": {
+    "enable": true,
+    "globals": [
+      "vim",
+      "require"
+    ],
+    "disable": [
+      "different-requires"
+    ]
+  },
+  "workspace": {
+    "library": [
+      "C:/Users/ovftank/AppData/Local/nvim-data/lazy",
+      "C:/tools/neovim/nvim-win64/lib/nvim",
+      "C:/tools/neovim/nvim-win64/share/nvim/runtime/lua",
+      "C:/tools/neovim/nvim-win64/share/nvim/runtime/lua/jit",
+      "C:/tools/neovim/nvim-win64/share/nvim/runtime/lua/vim",
+      "./lua",
+      "${3rd}/luv/library"
+    ],
+    "checkThirdParty": false
+  }
+}
