@@ -2,6 +2,7 @@ return {
     require("plugins.colorscheme"),
     require("plugins.dashboard"),
     require("plugins.mason"),
+    require("plugins.copilot"),
     require("plugins.cmp"),
     require("plugins.telescope"),
     require("plugins.treesitter"),

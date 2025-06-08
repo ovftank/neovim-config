@@ -38,6 +38,23 @@ return {
 
       capabilities.offsetEncoding = { "utf-16" }
 
+      local on_attach = function(client, bufnr)
+        if client.server_capabilities.documentHighlightProvider then
+          local group = vim.api.nvim_create_augroup("lsp_document_highlight", { clear = false })
+          vim.api.nvim_clear_autocmds({ buffer = bufnr, group = group })
+          vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+            group = group,
+            buffer = bufnr,
+            callback = vim.lsp.buf.document_highlight,
+          })
+          vim.api.nvim_create_autocmd("CursorMoved", {
+            group = group,
+            buffer = bufnr,
+            callback = vim.lsp.buf.clear_references,
+          })
+        end
+      end
+
       local servers = {
         lua_ls = {
           settings = {
@@ -76,6 +93,7 @@ return {
 
       for server, config in pairs(servers) do
         config.capabilities = capabilities
+        config.on_attach = on_attach
         lspconfig[server].setup(config)
       end
     end,

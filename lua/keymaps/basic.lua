@@ -47,11 +47,11 @@ keymap.set("n", "N", "Nzzzv", { desc = "Tìm trước đó" })
 
 keymap.set("n", "<Space>", ":set relativenumber!<CR>", { desc = "Toggle relativenumber", silent = true })
 
-keymap.set("n", "<C-[>", "<<", { desc = "Indent left" })
-keymap.set("n", "<C-]>", ">>", { desc = "Indent right" })
-keymap.set("v", "<C-[>", "<gv", { desc = "Indent left" })
-keymap.set("v", "<C-]>", ">gv", { desc = "Indent right" })
-keymap.set("i", "<C-[>", "<C-d>", { desc = "Indent left" })
-keymap.set("i", "<C-]>", "<C-t>", { desc = "Indent right" })
+keymap.set("n", "<C-<>", "<<", { desc = "Indent left" })
+keymap.set("n", "<C->>", ">>", { desc = "Indent right" })
+keymap.set("v", "<C-<>", "<gv", { desc = "Indent left" })
+keymap.set("v", "<C->>", ">gv", { desc = "Indent right" })
+keymap.set("i", "<C-<>", "<C-d>", { desc = "Indent left" })
+keymap.set("i", "<C->>", "<C-t>", { desc = "Indent right" })
 
 return M

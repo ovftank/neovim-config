@@ -1,6 +1,6 @@
 return {
     "chikko80/error-lens.nvim",
-    event = "BufRead",
+    event = { "BufRead", "BufNewFile", "InsertEnter" },
     dependencies = { "nvim-telescope/telescope.nvim" },
     opts = {
         enabled = true,
@@ -10,7 +10,7 @@ return {
             step = 7,
             total = 30
         },
-        prefix = 4,
+        prefix = 2,
         colors = {
             error_fg = "#ff5555",
             error_bg = "#44475a",

@@ -12,12 +12,15 @@ return {
       "L3MON4D3/LuaSnip",
       "saadparwaiz1/cmp_luasnip",
       "Jezda1337/nvim-html-css",
+      "zbirenbaum/copilot-cmp",
 
     },
     config = function()
       local cmp = require("cmp")
       local luasnip = require("luasnip")
       local keymaps = require("keymaps.cmp")
+
+      require("copilot_cmp").setup()
 
       cmp.setup({
         snippet = {
@@ -28,6 +31,7 @@ return {
         mapping = keymaps.get_cmp_mappings(),
         sources = cmp.config.sources({
           { name = "nvim_lsp", priority = 1000, max_item_count = 20 },
+          { name = "copilot",  priority = 950 },
           { name = "luasnip",  priority = 900 },
           { name = "vsnip",    priority = 850 },
         }, {
@@ -39,11 +43,12 @@ return {
           format = function(entry, vim_item)
             vim_item.menu = ({
               nvim_lsp = "[LSP]",
-              luasnip = "[📝 LuaSnip]",
-              vsnip = "[📝 VSCode]",
-              buffer = "[📄 Buffer]",
-              path = "[📁 Path]",
-              calc = "[🧮 Calc]",
+              copilot = "[Copilot]",
+              luasnip = "[LuaSnip]",
+              vsnip = "[VSCode]",
+              buffer = "[Buffer]",
+              path = "[Path]",
+              calc = "[Calc]",
             })[entry.source.name]
 
             vim_item.dup = 0

@@ -22,9 +22,29 @@ return {
     },
     sections = {
       lualine_a = { "mode" },
-      lualine_b = { "branch", "diff", "diagnostics" },
+      lualine_b = {
+        "branch",
+        "diff",
+        {
+          "diagnostics",
+          sources = { "nvim_diagnostic" },
+          sections = { "error", "warn", "info", "hint" },
+          symbols = { error = "✗ ", warn = "⚠ ", info = "ⓘ ", hint = "💡" },
+          colored = true,
+          update_in_insert = false,
+          always_visible = false,
+          on_click = function()
+            require("telescope.builtin").diagnostics()
+          end,
+        }
+      },
       lualine_c = { "filename" },
-      lualine_x = { "encoding", "fileformat", "filetype" },
+      lualine_x = {
+        "copilot",
+        "encoding",
+        "fileformat",
+        "filetype"
+      },
       lualine_y = { "progress" },
       lualine_z = { "location" },
     },
