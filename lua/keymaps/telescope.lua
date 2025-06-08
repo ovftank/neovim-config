@@ -39,7 +39,7 @@ local function setup_telescope_keymaps()
     })
   end, { desc = "find in buffer" })
 
-  keymap.set({ "n", "v", "i" }, "<C-r>", function()
+  keymap.set({ "n", "v", "i" }, "<C-q>", function()
     if vim.fn.mode() == "i" then
       vim.cmd("stopinsert")
     end

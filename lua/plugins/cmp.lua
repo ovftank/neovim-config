@@ -11,7 +11,7 @@ return {
       "hrsh7th/vim-vsnip",
       "L3MON4D3/LuaSnip",
       "saadparwaiz1/cmp_luasnip",
-      "Jezda1337/nvim-html-css",
+
       "zbirenbaum/copilot-cmp",
       "onsails/lspkind.nvim",
       "luckasRanarison/tailwind-tools.nvim",
@@ -22,7 +22,6 @@ return {
       local keymaps = require("keymaps.cmp")
 
       require("copilot_cmp").setup()
-
       cmp.setup({
         snippet = {
           expand = function(args)

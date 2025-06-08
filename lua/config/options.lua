@@ -29,5 +29,8 @@ vim.opt.lazyredraw = true
 
 vim.opt.completeopt = "menu,menuone,noselect"
 
+vim.opt.mouse = "a"
+vim.opt.mousemoveevent = true
+
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1

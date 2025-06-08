@@ -326,6 +326,23 @@ This configuration has been customized for easier use by beginners:
 </tr>
 </table>
 
+### Smart Selection (Treesitter)
+
+<table>
+<tr>
+<th>Key</th>
+<th>Action</th>
+</tr>
+<tr>
+<td><kbd>Alt+W</kbd></td>
+<td>Expand selection (all modes)</td>
+</tr>
+<tr>
+<td><kbd>Alt+S</kbd></td>
+<td>Shrink selection (visual mode)</td>
+</tr>
+</table>
+
 ### File Explorer (Neo-tree)
 
 <table>

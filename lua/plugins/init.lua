@@ -1,9 +1,9 @@
 return {
-    require("plugins.augment"),
     require("plugins.autopairs"),
     require("plugins.barbar"),
     require("plugins.cmp"),
     require("plugins.colorscheme"),
+    require("plugins.comment"),
     require("plugins.conform"),
     require("plugins.emmet"),
     require("plugins.copilot"),
@@ -21,4 +21,5 @@ return {
     require("plugins.telescope"),
     require("plugins.toggleterm"),
     require("plugins.treesitter"),
+    require("plugins.wakatime"),
 }

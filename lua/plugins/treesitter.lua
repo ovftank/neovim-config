@@ -3,6 +3,7 @@ return {
   branch = "master",
   lazy = false,
   build = ":TSUpdate",
+
   config = function()
     require("nvim-treesitter.configs").setup({
       ensure_installed = {
@@ -16,6 +17,7 @@ return {
         "html",
         "css",
         "json",
+        "jsonc",
         "python",
         "bash",
         "yaml",
@@ -35,15 +37,14 @@ return {
         enable = true,
         disable = function(_, buf)
           local max_filesize = 100 * 1024
-          local ok, stats = pcall(function()
-            return (vim.uv or vim.loop).fs_stat(vim.api.nvim_buf_get_name(buf))
-          end)
+          local ok, stats = pcall((vim.uv or vim.loop).fs_stat, vim.api.nvim_buf_get_name(buf))
           if ok and stats and stats.size > max_filesize then
             return true
           end
         end,
         additional_vim_regex_highlighting = false,
       },
+
       indent = {
         enable = true,
         disable = { "python", "yaml" },
@@ -51,9 +52,13 @@ return {
 
       incremental_selection = {
         enable = true,
+        keymaps = {
+          init_selection = "gnn",
+          node_incremental = "grn",
+          scope_incremental = "grc",
+          node_decremental = "grm",
+        },
       },
-
-      modules = {},
     })
   end,
 }

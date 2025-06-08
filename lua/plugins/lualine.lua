@@ -105,7 +105,6 @@ return {
           end,
           color = { fg = "#e06c75" },
         },
-
         "copilot",
         "encoding",
         "fileformat",

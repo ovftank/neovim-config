@@ -95,6 +95,14 @@ return {
         },
         html = {
           filetypes = { "html" },
+          init_options = {
+            configurationSection = { "html", "css", "javascript" },
+            embeddedLanguages = {
+              css = true,
+              javascript = true
+            },
+            provideFormatter = true
+          }
         },
         cssls = {},
         emmet_language_server = {
@@ -180,7 +188,7 @@ return {
           "markdownlint",
           "debugpy",
           "js-debug-adapter",
-          "vscode-langservers-extracted",
+          "vscode-langservers-extracted"
         },
         auto_update = true,
         run_on_start = true,

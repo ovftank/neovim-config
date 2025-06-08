@@ -22,22 +22,20 @@ return {
           yaml = { "prettier" },
           markdown = { "prettier" },
           graphql = { "prettier" },
+          astro = { "prettier" },
+        },
+        default_format_opts = {
+          timeout_ms = 3000,
+          lsp_format = "fallback",
         },
         format_on_save = {
-          timeout_ms = 500,
-          lsp_fallback = true,
+          timeout_ms = 3000,
+          lsp_format = "fallback",
+          async = false,
         },
+        notify_on_error = true,
+        notify_no_formatters = true,
         formatters = {
-          prettier = {
-            options = {
-              ft_parsers = {
-                javascript = "babel",
-                javascriptreact = "babel",
-                typescript = "typescript",
-                typescriptreact = "typescript",
-              },
-            },
-          },
         },
       })
     end,
