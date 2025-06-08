@@ -58,9 +58,36 @@ scoop bucket add nerd-fonts
 
 Write-Host "Dang cai dat JetBrains Mono Nerd Font..."
 scoop install nerd-fonts/JetBrainsMono-NF-Mono
-if (!(Get-Command nvim -ErrorAction SilentlyContinue)) {
-    Write-Host "Dang cai dat Neovim..."
-    scoop install neovim
+
+Write-Host "Dang kiem tra Nerd Fonts da cai dat..."
+$nerdFontInstalled = $false
+try {
+    $fonts = [System.Drawing.FontFamily]::Families
+    $nerdFonts = $fonts | Where-Object { $_.Name -like "*Nerd*" -or $_.Name -like "*NF*" -or $_.Name -like "*JetBrains*" }
+    if ($nerdFonts) {
+        Write-Host "Tim thay cac Nerd Fonts:" -ForegroundColor Green
+        foreach ($font in $nerdFonts) {
+            Write-Host "  - $($font.Name)" -ForegroundColor Cyan
+        }
+        $nerdFontInstalled = $true
+    } else {
+        Write-Host "Khong tim thay Nerd Fonts trong he thong" -ForegroundColor Yellow
+    }
+} catch {
+    Write-Host "Loi khi kiem tra font: $_" -ForegroundColor Red
+}
+
+if (!$nerdFontInstalled) {
+    Write-Host "Thu kiem tra Nerd Fonts trong thu muc Windows Fonts..."
+    $windowsFonts = Get-ChildItem "C:\Windows\Fonts" | Where-Object { $_.Name -like "*Nerd*" -or $_.Name -like "*NF*" -or $_.Name -like "*JetBrains*" }
+    if ($windowsFonts) {
+        Write-Host "Tim thay Nerd Fonts trong thu muc Fonts:" -ForegroundColor Green
+        foreach ($font in $windowsFonts) {
+            Write-Host "  - $($font.Name)" -ForegroundColor Cyan
+        }
+    } else {
+        Write-Host "Khong tim thay Nerd Fonts trong thu muc Fonts" -ForegroundColor Yellow
+    }
 }
 if (!(Get-Command wt -ErrorAction SilentlyContinue)) {
     Write-Host "Dang cai dat Neovide..."
