@@ -18,10 +18,26 @@ Write-Host "Dang clone cau hinh Neovim moi..."
 git clone $repoUrl $nvimConfigPath
 
 if ($?) {
-    Write-Host "Cai dat thanh cong! Khoi dong Neovim de tiep tuc."
+    Write-Host "Clone cau hinh thanh cong!"
 } else {
     Write-Host "Loi khi clone repo. Vui long thu lai."
     exit 1
+}
+
+Write-Host "Dang clone lazy.nvim plugin manager..."
+$lazyPath = "$nvimDataPath\lazy\lazy.nvim"
+if (Test-Path $lazyPath) {
+    Write-Host "Dang xoa lazy.nvim cu..."
+    Remove-Item -Path $lazyPath -Recurse -Force
+}
+
+New-Item -ItemType Directory -Path "$nvimDataPath\lazy" -Force | Out-Null
+git clone --filter=blob:none --branch=stable https://github.com/folke/lazy.nvim.git $lazyPath
+
+if ($?) {
+    Write-Host "Clone lazy.nvim thanh cong!"
+} else {
+    Write-Host "Loi khi clone lazy.nvim. Plugin manager se tu dong tai khi khoi dong Neovim."
 }
 
 if (!(Get-Command scoop -ErrorAction SilentlyContinue)) {
@@ -65,4 +81,4 @@ if (Test-Path $batFilePath) {
     Write-Host "Khong tim thay file add-neovide-context.bat"
 }
 
-Write-Host "Cai dat hoan tat!"
+Write-Host "Cai dat hoan tat! Khoi dong Neovim de tiep tuc."
