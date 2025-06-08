@@ -110,7 +110,6 @@ return {
             "--completion-style=detailed",
             "--function-arg-placeholders",
             "--fallback-style=llvm",
-            "--query-driver=C:\\ProgramData\\mingw64\\mingw64\\bin\\g++.exe",
           },
           init_options = {
             usePlaceholders = true,
