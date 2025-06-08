@@ -30,6 +30,7 @@ return {
           "cssls",
           "tailwindcss",
           "jsonls",
+          "clangd",
         },
         automatic_enable = true,
       })
@@ -100,6 +101,24 @@ return {
           filetypes = { "html", "css", "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
         },
         jsonls = {},
+        clangd = {
+          cmd = {
+            "clangd",
+            "--background-index",
+            "--clang-tidy",
+            "--header-insertion=iwyu",
+            "--completion-style=detailed",
+            "--function-arg-placeholders",
+            "--fallback-style=llvm",
+            "--query-driver=C:\\ProgramData\\mingw64\\mingw64\\bin\\g++.exe",
+          },
+          init_options = {
+            usePlaceholders = true,
+            completeUnimported = true,
+            clangdFileStatus = true,
+          },
+          filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
+        },
         eslint = {
           settings = {
             packageManager = "pnpm",
