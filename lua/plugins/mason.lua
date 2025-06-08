@@ -30,7 +30,7 @@ return {
           "cssls",
           "tailwindcss",
           "jsonls",
-          "clangd",
+          "emmet_language_server",
         },
         automatic_enable = true,
       })
@@ -97,27 +97,24 @@ return {
           filetypes = { "html" },
         },
         cssls = {},
+        emmet_language_server = {
+          filetypes = { "html", "css", "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "svelte" },
+          init_options = {
+            includeLanguages = {},
+            excludeLanguages = {},
+            extensionsPath = {},
+            preferences = {},
+            showAbbreviationSuggestions = true,
+            showExpandedAbbreviation = "always",
+            showSuggestionsAsSnippets = false,
+            syntaxProfiles = {},
+            variables = {},
+          },
+        },
         tailwindcss = {
           filetypes = { "html", "css", "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
         },
         jsonls = {},
-        clangd = {
-          cmd = {
-            "clangd",
-            "--background-index",
-            "--clang-tidy",
-            "--header-insertion=iwyu",
-            "--completion-style=detailed",
-            "--function-arg-placeholders",
-            "--fallback-style=llvm",
-          },
-          init_options = {
-            usePlaceholders = true,
-            completeUnimported = true,
-            clangdFileStatus = true,
-          },
-          filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
-        },
         eslint = {
           settings = {
             packageManager = "pnpm",
@@ -183,6 +180,7 @@ return {
           "markdownlint",
           "debugpy",
           "js-debug-adapter",
+          "vscode-langservers-extracted",
         },
         auto_update = true,
         run_on_start = true,

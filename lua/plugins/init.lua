@@ -4,6 +4,7 @@ return {
     require("plugins.cmp"),
     require("plugins.colorscheme"),
     require("plugins.conform"),
+    require("plugins.emmet"),
     require("plugins.copilot"),
     require("plugins.dashboard"),
     require("plugins.eagle"),

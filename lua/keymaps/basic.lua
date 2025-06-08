@@ -3,7 +3,9 @@ local keymap = vim.keymap
 keymap.set({ "n", "v", "i" }, "<C-s>", "<Esc>:w<CR>", { desc = "save" })
 
 keymap.set("v", "<C-c>", [["+y]], { desc = "copy" })
-keymap.set({ "n", "v", "i" }, "<C-v>", [["+p]], { desc = "paste" })
+keymap.set("n", "<C-v>", [["+p]], { desc = "paste" })
+keymap.set("v", "<C-v>", [["+p]], { desc = "paste" })
+keymap.set("i", "<C-v>", "<C-r>+", { desc = "paste" })
 keymap.set("v", "<C-x>", [["+d]], { desc = "cut" })
 
 keymap.set("n", "<C-a>", "ggVG", { desc = "select all" })
