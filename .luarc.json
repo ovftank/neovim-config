@@ -18,7 +18,6 @@
   },
   "workspace": {
     "library": [
-      "C:/Users/ovftank/AppData/Local/nvim-data/lazy",
       "C:/tools/neovim/nvim-win64/lib/nvim",
       "C:/tools/neovim/nvim-win64/share/nvim/runtime/lua",
       "C:/tools/neovim/nvim-win64/share/nvim/runtime/lua/jit",

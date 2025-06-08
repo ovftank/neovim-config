@@ -51,13 +51,31 @@ local diagnostics_group = augroup("DiagnosticsConfig", { clear = true })
 autocmd({ "CursorHold", "CursorHoldI" }, {
   group = diagnostics_group,
   callback = function()
-    vim.diagnostic.open_float(nil, { focus = false })
+    if vim.bo.filetype == "dashboard" or vim.bo.filetype == "" then
+      return
+    end
+
+    local clients = vim.lsp.get_clients({ bufnr = 0 })
+    if #clients == 0 then
+      return
+    end
+
+    local diagnostics = vim.diagnostic.get(0)
+    if #diagnostics > 0 then
+      vim.diagnostic.open_float(nil, { focus = false })
+    end
   end,
 })
 
 autocmd({ "TextChanged", "TextChangedI" }, {
   group = diagnostics_group,
   callback = function()
-    vim.diagnostic.show()
+    if vim.bo.filetype == "dashboard" or vim.bo.filetype == "" then
+      return
+    end
+
+    pcall(function()
+      vim.diagnostic.show()
+    end)
   end,
 })

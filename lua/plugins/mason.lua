@@ -46,12 +46,22 @@ return {
           vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
             group = group,
             buffer = bufnr,
-            callback = vim.lsp.buf.document_highlight,
+            callback = function()
+              if vim.bo.filetype == "dashboard" or vim.bo.filetype == "" then
+                return
+              end
+              pcall(vim.lsp.buf.document_highlight)
+            end,
           })
           vim.api.nvim_create_autocmd("CursorMoved", {
             group = group,
             buffer = bufnr,
-            callback = vim.lsp.buf.clear_references,
+            callback = function()
+              if vim.bo.filetype == "dashboard" or vim.bo.filetype == "" then
+                return
+              end
+              pcall(vim.lsp.buf.clear_references)
+            end,
           })
         end
       end
@@ -153,6 +163,8 @@ return {
           "stylelint",
           "htmlhint",
           "markdownlint",
+          "debugpy",
+          "js-debug-adapter",
         },
         auto_update = true,
         run_on_start = true,

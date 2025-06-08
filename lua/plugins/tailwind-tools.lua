@@ -45,6 +45,7 @@ return {
       require("tailwind-tools").setup({
         server = {
           override = false,
+          capabilities = require("cmp_nvim_lsp").default_capabilities(),
           settings = {
             includeLanguages = {
               typescript = "javascript",

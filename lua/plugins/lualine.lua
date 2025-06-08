@@ -40,6 +40,72 @@ return {
       },
       lualine_c = { "filename" },
       lualine_x = {
+        {
+          function()
+            local ok, dap = pcall(require, "dap")
+            ---@diagnostic disable-next-line: undefined-field
+            if ok and dap.session() ~= nil then
+              return "▶"
+            else
+              return "▶"
+            end
+          end,
+          on_click = function()
+            local ok, dap = pcall(require, "dap")
+            if ok then
+              ---@diagnostic disable-next-line: undefined-field
+              dap.continue()
+            end
+          end,
+          color = function()
+            local ok, dap = pcall(require, "dap")
+            ---@diagnostic disable-next-line: undefined-field
+            if ok and dap.session() ~= nil then
+              return { fg = "#98c379" }
+            else
+              return { fg = "#e5c07b" }
+            end
+          end,
+        },
+        {
+          function()
+            local ok, dap = pcall(require, "dap")
+            ---@diagnostic disable-next-line: undefined-field
+            if ok and dap.session() ~= nil then
+              return "⏭"
+            else
+              return ""
+            end
+          end,
+          on_click = function()
+            local ok, dap = pcall(require, "dap")
+            if ok then
+              ---@diagnostic disable-next-line: undefined-field
+              dap.step_over()
+            end
+          end,
+          color = { fg = "#61afef" },
+        },
+        {
+          function()
+            local ok, dap = pcall(require, "dap")
+            ---@diagnostic disable-next-line: undefined-field
+            if ok and dap.session() ~= nil then
+              return "■"
+            else
+              return ""
+            end
+          end,
+          on_click = function()
+            local ok, dap = pcall(require, "dap")
+            if ok then
+              ---@diagnostic disable-next-line: undefined-field
+              dap.terminate()
+            end
+          end,
+          color = { fg = "#e06c75" },
+        },
+
         "copilot",
         "encoding",
         "fileformat",
