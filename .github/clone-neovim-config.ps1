@@ -1,5 +1,21 @@
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
 
+if (!(Get-Command choco -ErrorAction SilentlyContinue)) {
+    Write-Host "Dang cai dat Chocolatey..."
+    try {
+        Set-ExecutionPolicy Bypass -Scope Process -Force
+        [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
+        Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+        $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+    } catch {
+        Write-Host "Loi khi cai dat Chocolatey: $_"
+        exit 1
+    }
+}
+
+Write-Host "Dang cai dat Neovim va ripgrep bang Chocolatey..."
+choco install neovim ripgrep -y
+
 $nvimConfigPath = "$env:LOCALAPPDATA\nvim"
 $nvimDataPath = "$env:LOCALAPPDATA\nvim-data"
 $repoUrl = "https://github.com/ovftank/neovim-config.git"
@@ -89,10 +105,8 @@ if (!$nerdFontInstalled) {
         Write-Host "Khong tim thay Nerd Fonts trong thu muc Fonts" -ForegroundColor Yellow
     }
 }
-if (!(Get-Command wt -ErrorAction SilentlyContinue)) {
-    Write-Host "Dang cai dat Neovide..."
-    scoop install neovide
-}
+Write-Host "Dang cai dat Neovide bang Scoop..."
+scoop install neovide
 
 
 Write-Host "Dang them Neovide vao context menu..."
