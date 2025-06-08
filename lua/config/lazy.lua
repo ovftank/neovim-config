@@ -4,9 +4,9 @@ if not vim.fn.isdirectory(lazypath) then
   local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
   if vim.v.shell_error ~= 0 then
     vim.api.nvim_echo({
-      { "Không thể clone lazy.nvim:\n", "ErrorMsg" },
+      { "cant clone lazy.nvim:\n", "ErrorMsg" },
       { out, "WarningMsg" },
-      { "\nNhấn phím bất kỳ để thoát..." },
+      { "\npress any key to exit..." },
     }, true, {})
     vim.fn.getchar()
     os.exit(1)

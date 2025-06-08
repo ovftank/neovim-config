@@ -13,7 +13,8 @@ return {
       "saadparwaiz1/cmp_luasnip",
       "Jezda1337/nvim-html-css",
       "zbirenbaum/copilot-cmp",
-
+      "onsails/lspkind.nvim",
+      "luckasRanarison/tailwind-tools.nvim",
     },
     config = function()
       local cmp = require("cmp")
@@ -41,18 +42,57 @@ return {
         }),
         formatting = {
           format = function(entry, vim_item)
-            vim_item.menu = ({
-              nvim_lsp = "[LSP]",
-              copilot = "[Copilot]",
-              luasnip = "[LuaSnip]",
-              vsnip = "[VSCode]",
-              buffer = "[Buffer]",
-              path = "[Path]",
-              calc = "[Calc]",
-            })[entry.source.name]
+            local lspkind_ok, lspkind = pcall(require, "lspkind")
+            local tailwind_ok, tailwind_cmp = pcall(require, "tailwind-tools.cmp")
+
+            if lspkind_ok and tailwind_ok then
+              vim_item = lspkind.cmp_format({
+                before = tailwind_cmp.lspkind_format,
+                mode = "symbol_text",
+                maxwidth = 50,
+                ellipsis_char = "...",
+                symbol_map = {
+                  Copilot = "",
+                  Text = "󰉿",
+                  Method = "󰆧",
+                  Function = "󰊕",
+                  Constructor = "",
+                  Field = "󰜢",
+                  Variable = "󰀫",
+                  Class = "󰠱",
+                  Interface = "",
+                  Module = "",
+                  Property = "󰜢",
+                  Unit = "󰑭",
+                  Value = "󰎠",
+                  Enum = "",
+                  Keyword = "󰌋",
+                  Snippet = "",
+                  Color = "󰏘",
+                  File = "󰈙",
+                  Reference = "󰈇",
+                  Folder = "󰉋",
+                  EnumMember = "",
+                  Constant = "󰏿",
+                  Struct = "󰙅",
+                  Event = "",
+                  Operator = "󰆕",
+                  TypeParameter = "",
+                },
+              })(entry, vim_item)
+            else
+              vim_item.menu = ({
+                nvim_lsp = "[LSP]",
+                copilot = "[Copilot]",
+                luasnip = "[LuaSnip]",
+                vsnip = "[VSCode]",
+                buffer = "[Buffer]",
+                path = "[Path]",
+                calc = "[Calc]",
+              })[entry.source.name]
+            end
 
             vim_item.dup = 0
-
             return vim_item
           end,
         },
@@ -91,6 +131,43 @@ return {
         let g:vsnip_filetypes.typescriptreact = ['typescript', 'html']
         let g:vsnip_filetypes.vue = ['javascript', 'html', 'css']
       ]])
+    end,
+  },
+  {
+    "onsails/lspkind.nvim",
+    config = function()
+      require("lspkind").init({
+        mode = "symbol_text",
+        preset = "codicons",
+        symbol_map = {
+          Text = "󰉿",
+          Method = "󰆧",
+          Function = "󰊕",
+          Constructor = "",
+          Field = "󰜢",
+          Variable = "󰀫",
+          Class = "󰠱",
+          Interface = "",
+          Module = "",
+          Property = "󰜢",
+          Unit = "󰑭",
+          Value = "󰎠",
+          Enum = "",
+          Keyword = "󰌋",
+          Snippet = "",
+          Color = "󰏘",
+          File = "󰈙",
+          Reference = "󰈇",
+          Folder = "󰉋",
+          EnumMember = "",
+          Constant = "󰏿",
+          Struct = "󰙅",
+          Event = "",
+          Operator = "󰆕",
+          TypeParameter = "",
+          Copilot = "",
+        },
+      })
     end,
   },
 }

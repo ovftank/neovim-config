@@ -24,7 +24,7 @@ local function setup_telescope_keymaps()
         return true
       end
     })
-  end, { desc = "Tìm file (gõ % để search content)" })
+  end, { desc = "find files (% for grep)" })
 
   keymap.set({ "n", "v", "i" }, "<C-f>", function()
     if vim.fn.mode() == "i" then
@@ -37,7 +37,7 @@ local function setup_telescope_keymaps()
         return true
       end
     })
-  end, { desc = "Tìm nội dung trong file hiện tại" })
+  end, { desc = "find in buffer" })
 
   keymap.set({ "n", "v", "i" }, "<C-r>", function()
     if vim.fn.mode() == "i" then
@@ -50,7 +50,7 @@ local function setup_telescope_keymaps()
         return true
       end
     })
-  end, { desc = "Tìm references" })
+  end, { desc = "find refs" })
 
   keymap.set({ "n", "v", "i" }, "<F1>", function()
     if vim.fn.mode() == "i" then
@@ -63,7 +63,7 @@ local function setup_telescope_keymaps()
         return true
       end
     })
-  end, { desc = "Goto definition" })
+  end, { desc = "goto def" })
 end
 
 vim.api.nvim_create_autocmd("VimEnter", {

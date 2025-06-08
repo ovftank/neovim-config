@@ -25,6 +25,7 @@ return {
           "lua_ls",
           "pyright",
           "ts_ls",
+          "eslint",
           "html",
           "cssls",
           "tailwindcss",
@@ -89,11 +90,45 @@ return {
           filetypes = { "html", "css", "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
         },
         jsonls = {},
+        eslint = {
+          settings = {
+            packageManager = "pnpm",
+            useESLintClass = true,
+            experimental = {
+              useFlatConfig = false
+            },
+            codeActionOnSave = {
+              enable = true,
+              mode = "all"
+            },
+            format = true,
+            quiet = false,
+            onIgnoredFiles = "off",
+            rulesCustomizations = {},
+            run = "onType",
+            problems = {
+              shortenToSingleLine = false
+            },
+            nodePath = "",
+            workingDirectory = {
+              mode = "location"
+            }
+          },
+          on_attach = function(client, bufnr)
+            on_attach(client, bufnr)
+            vim.api.nvim_create_autocmd("BufWritePre", {
+              buffer = bufnr,
+              command = "EslintFixAll",
+            })
+          end,
+        },
       }
 
       for server, config in pairs(servers) do
         config.capabilities = capabilities
-        config.on_attach = on_attach
+        if server ~= "eslint" then
+          config.on_attach = on_attach
+        end
         lspconfig[server].setup(config)
       end
     end,
@@ -110,6 +145,14 @@ return {
           "stylua",
           "isort",
           "pylint",
+          "eslint_d",
+          "autopep8",
+          "luacheck",
+          "jsonlint",
+          "yamllint",
+          "stylelint",
+          "htmlhint",
+          "markdownlint",
         },
         auto_update = true,
         run_on_start = true,

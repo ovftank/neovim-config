@@ -1,57 +1,53 @@
-local M = {}
-
 local keymap = vim.keymap
 
-keymap.set({ "n", "v", "i" }, "<C-s>", "<Esc>:w<CR>", { desc = "Save file" })
+keymap.set({ "n", "v", "i" }, "<C-s>", "<Esc>:w<CR>", { desc = "save" })
 
-keymap.set("v", "<C-c>", [["+y]], { desc = "Copy" })
-keymap.set({ "n", "v", "i" }, "<C-v>", [["+p]], { desc = "Paste" })
-keymap.set("v", "<C-x>", [["+d]], { desc = "Cut" })
+keymap.set("v", "<C-c>", [["+y]], { desc = "copy" })
+keymap.set({ "n", "v", "i" }, "<C-v>", [["+p]], { desc = "paste" })
+keymap.set("v", "<C-x>", [["+d]], { desc = "cut" })
 
-keymap.set("n", "<C-a>", "ggVG", { desc = "Select all" })
-keymap.set("v", "<C-a>", "ggVG", { desc = "Select all" })
-keymap.set("i", "<C-a>", "<Esc>ggVG", { desc = "Select all" })
+keymap.set("n", "<C-a>", "ggVG", { desc = "select all" })
+keymap.set("v", "<C-a>", "ggVG", { desc = "select all" })
+keymap.set("i", "<C-a>", "<Esc>ggVG", { desc = "select all" })
 
-keymap.set("i", "<S-Up>", "<C-o>v<Up>", { desc = "Select up from insert" })
-keymap.set("i", "<S-Down>", "<C-o>v<Down>", { desc = "Select down from insert" })
-keymap.set("i", "<S-Left>", "<C-o>v<Left>", { desc = "Select left from insert" })
-keymap.set("i", "<S-Right>", "<C-o>v<Right>", { desc = "Select right from insert" })
+keymap.set("i", "<S-Up>", "<C-o>v<Up>", { desc = "select up" })
+keymap.set("i", "<S-Down>", "<C-o>v<Down>", { desc = "select down" })
+keymap.set("i", "<S-Left>", "<C-o>v<Left>", { desc = "select left" })
+keymap.set("i", "<S-Right>", "<C-o>v<Right>", { desc = "select right" })
 
-keymap.set("n", "<C-z>", "u", { desc = "Undo" })
-keymap.set("i", "<C-z>", "<Esc>ui", { desc = "Undo" })
-keymap.set("v", "<C-z>", "<Esc>u", { desc = "Undo" })
+keymap.set("n", "<C-z>", "u", { desc = "undo" })
+keymap.set("i", "<C-z>", "<Esc>ui", { desc = "undo" })
+keymap.set("v", "<C-z>", "<Esc>u", { desc = "undo" })
 
-keymap.set("n", "<C-S-z>", "<C-r>", { desc = "Redo" })
-keymap.set("i", "<C-S-z>", "<Esc><C-r>i", { desc = "Redo" })
-keymap.set("v", "<C-S-z>", "<Esc><C-r>", { desc = "Redo" })
+keymap.set("n", "<C-S-z>", "<C-r>", { desc = "redo" })
+keymap.set("i", "<C-S-z>", "<Esc><C-r>i", { desc = "redo" })
+keymap.set("v", "<C-S-z>", "<Esc><C-r>", { desc = "redo" })
 
-keymap.set("s", "<BS>", "<C-g>c", { desc = "Delete selection" })
-keymap.set("v", "<BS>", "d", { desc = "Xóa text được chọn" })
+keymap.set("s", "<BS>", "<C-g>c", { desc = "del selection" })
+keymap.set("v", "<BS>", "d", { desc = "del text" })
 
-keymap.set("i", "<C-BS>", "<C-w>", { desc = "Xóa từ bên trái" })
-keymap.set("i", "<C-h>", "<C-w>", { desc = "Xóa từ bên trái (alternative)" })
+keymap.set("i", "<C-BS>", "<C-w>", { desc = "del word" })
+keymap.set("i", "<C-h>", "<C-w>", { desc = "del word alt" })
 
-keymap.set("n", "<C-u>", "dd", { desc = "Xóa dòng hiện tại" })
-keymap.set("i", "<C-u>", "<Esc>ddi", { desc = "Xóa dòng hiện tại" })
-keymap.set("v", "<C-u>", "<Esc>dd", { desc = "Xóa dòng hiện tại" })
+keymap.set("n", "<C-u>", "dd", { desc = "del line" })
+keymap.set("i", "<C-u>", "<Esc>ddi", { desc = "del line" })
+keymap.set("v", "<C-u>", "<Esc>dd", { desc = "del line" })
 
-keymap.set("n", "<C-Down>", ":m .+1<CR>==", { desc = "Di chuyển dòng xuống" })
-keymap.set("n", "<C-Up>", ":m .-2<CR>==", { desc = "Di chuyển dòng lên" })
-keymap.set("v", "<C-Down>", ":m '>+1<CR>gv=gv", { desc = "Di chuyển dòng xuống" })
-keymap.set("v", "<C-Up>", ":m '<-2<CR>gv=gv", { desc = "Di chuyển dòng lên" })
-keymap.set("i", "<C-Down>", "<Esc>:m .+1<CR>==gi", { desc = "Di chuyển dòng xuống" })
-keymap.set("i", "<C-Up>", "<Esc>:m .-2<CR>==gi", { desc = "Di chuyển dòng lên" })
+keymap.set("n", "<C-Down>", ":m .+1<CR>==", { desc = "move down" })
+keymap.set("n", "<C-Up>", ":m .-2<CR>==", { desc = "move up" })
+keymap.set("v", "<C-Down>", ":m '>+1<CR>gv=gv", { desc = "move down" })
+keymap.set("v", "<C-Up>", ":m '<-2<CR>gv=gv", { desc = "move up" })
+keymap.set("i", "<C-Down>", "<Esc>:m .+1<CR>==gi", { desc = "move down" })
+keymap.set("i", "<C-Up>", "<Esc>:m .-2<CR>==gi", { desc = "move up" })
 
-keymap.set("n", "n", "nzzzv", { desc = "Tìm tiếp theo" })
-keymap.set("n", "N", "Nzzzv", { desc = "Tìm trước đó" })
+keymap.set("n", "n", "nzzzv", { desc = "next search" })
+keymap.set("n", "N", "Nzzzv", { desc = "prev search" })
 
-keymap.set("n", "<Space>", ":set relativenumber!<CR>", { desc = "Toggle relativenumber", silent = true })
+keymap.set("n", "<Space>", ":set relativenumber!<CR>", { desc = "toggle relnum", silent = true })
 
-keymap.set("n", "<C-<>", "<<", { desc = "Indent left" })
-keymap.set("n", "<C->>", ">>", { desc = "Indent right" })
-keymap.set("v", "<C-<>", "<gv", { desc = "Indent left" })
-keymap.set("v", "<C->>", ">gv", { desc = "Indent right" })
-keymap.set("i", "<C-<>", "<C-d>", { desc = "Indent left" })
-keymap.set("i", "<C->>", "<C-t>", { desc = "Indent right" })
-
-return M
+keymap.set("n", "<C-<>", "<<", { desc = "indent left" })
+keymap.set("n", "<C->>", ">>", { desc = "indent right" })
+keymap.set("v", "<C-<>", "<gv", { desc = "indent left" })
+keymap.set("v", "<C->>", ">gv", { desc = "indent right" })
+keymap.set("i", "<C-<>", "<C-d>", { desc = "indent left" })
+keymap.set("i", "<C->>", "<C-t>", { desc = "indent right" })

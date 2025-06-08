@@ -1,7 +1,7 @@
 local keymap = vim.keymap
 
-keymap.set("n", "<C-b>", "<cmd>Neotree toggle<cr>", { desc = "Bật/tắt Neo-tree" })
-keymap.set("n", "<C-S-b>", "<cmd>Neotree reveal<cr>", { desc = "Hiển thị file hiện tại trong Neo-tree" })
+keymap.set({ "n", "i", "v", "x", "s", "o", "t", "c" }, "<C-b>", "<cmd>Neotree toggle<cr>", { desc = "toggle tree" })
+keymap.set({ "n", "i", "v", "x", "s", "o", "t", "c" }, "<C-S-b>", "<cmd>Neotree reveal<cr>", { desc = "reveal file" })
 
 local M = {}
 
