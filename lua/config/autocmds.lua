@@ -20,28 +20,6 @@ autocmd("BufWritePre", {
   end,
 })
 
-local dashboard_group = augroup("Dashboard", { clear = true })
-autocmd("VimEnter", {
-  group = dashboard_group,
-  desc = "show dashboard",
-  callback = function()
-    if vim.fn.argc() == 0 or (vim.fn.argc() == 1 and vim.fn.isdirectory(vim.fn.argv()[1]) == 1) then
-      vim.cmd("Dashboard")
-    end
-  end,
-})
-
-autocmd("BufEnter", {
-  group = dashboard_group,
-  desc = "back dashboard",
-  pattern = "*",
-  callback = function()
-    if vim.bo.filetype == "netrw" then
-      vim.cmd("Dashboard")
-    end
-  end,
-})
-
 local tailwind_group = augroup("TailwindAutoSort", { clear = true })
 autocmd("BufWritePre", {
   group = tailwind_group,

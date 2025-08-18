@@ -51,10 +51,6 @@ local diagnostics_group = augroup("DiagnosticsConfig", { clear = true })
 autocmd({ "CursorHold", "CursorHoldI" }, {
   group = diagnostics_group,
   callback = function()
-    if vim.bo.filetype == "dashboard" or vim.bo.filetype == "" then
-      return
-    end
-
     local clients = vim.lsp.get_clients({ bufnr = 0 })
     if #clients == 0 then
       return
@@ -70,10 +66,6 @@ autocmd({ "CursorHold", "CursorHoldI" }, {
 autocmd({ "TextChanged", "TextChangedI" }, {
   group = diagnostics_group,
   callback = function()
-    if vim.bo.filetype == "dashboard" or vim.bo.filetype == "" then
-      return
-    end
-
     pcall(function()
       vim.diagnostic.show()
     end)

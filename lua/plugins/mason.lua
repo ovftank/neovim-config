@@ -48,9 +48,6 @@ return {
             group = group,
             buffer = bufnr,
             callback = function()
-              if vim.bo.filetype == "dashboard" or vim.bo.filetype == "" then
-                return
-              end
               pcall(vim.lsp.buf.document_highlight)
             end,
           })
@@ -58,9 +55,6 @@ return {
             group = group,
             buffer = bufnr,
             callback = function()
-              if vim.bo.filetype == "dashboard" or vim.bo.filetype == "" then
-                return
-              end
               pcall(vim.lsp.buf.clear_references)
             end,
           })

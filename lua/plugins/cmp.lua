@@ -9,8 +9,6 @@ return {
       "hrsh7th/cmp-calc",
       "L3MON4D3/LuaSnip",
       "saadparwaiz1/cmp_luasnip",
-
-      "zbirenbaum/copilot-cmp",
       "onsails/lspkind.nvim",
       "luckasRanarison/tailwind-tools.nvim",
     },
@@ -20,7 +18,6 @@ return {
       local keymaps = require("keymaps.cmp")
 
       require("luasnip.loaders.from_lua").load({ paths = "./snippets" })
-      require("copilot_cmp").setup()
       cmp.setup({
         snippet = {
           expand = function(args)
@@ -30,7 +27,6 @@ return {
         mapping = keymaps.get_cmp_mappings(),
         sources = cmp.config.sources({
           { name = "nvim_lsp", priority = 1000, max_item_count = 20 },
-          { name = "copilot",  priority = 950 },
           { name = "luasnip",  priority = 900 },
         }, {
           { name = "buffer", priority = 500 },
@@ -49,7 +45,6 @@ return {
                 maxwidth = 50,
                 ellipsis_char = "...",
                 symbol_map = {
-                  Copilot = "",
                   Text = "󰉿",
                   Method = "󰆧",
                   Function = "󰊕",
@@ -80,7 +75,6 @@ return {
             else
               vim_item.menu = ({
                 nvim_lsp = "[LSP]",
-                copilot = "[Copilot]",
                 luasnip = "[LuaSnip]",
                 buffer = "[Buffer]",
                 path = "[Path]",
@@ -148,7 +142,6 @@ return {
           Event = "",
           Operator = "󰆕",
           TypeParameter = "",
-          Copilot = "",
         },
       })
     end,

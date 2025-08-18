@@ -25,7 +25,7 @@ return {
       auto_scroll = true,
       winbar = {
         enabled = true,
-        name_formatter = function(term)
+        name_formatter = function()
           return "Terminal"
         end
       },
