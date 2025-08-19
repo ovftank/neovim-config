@@ -49,21 +49,13 @@ function M.get_cmp_mappings()
       else
         fallback()
       end
-    end, { "i", "s" })
+    end, { "i", "s" }),
   })
 end
 
 function M.get_cmp_cmdline_mappings()
   local cmp = require("cmp")
   return cmp.mapping.preset.cmdline({
-    ["<CR>"] = {
-      c = function()
-        if cmp.visible() then
-          cmp.confirm({ select = true })
-          vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<CR>", true, true, true), "n", false)
-        end
-      end,
-    },
     ["<C-Space>"] = {
       c = function()
         if cmp.visible() then
