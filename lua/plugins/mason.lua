@@ -407,7 +407,6 @@ return {
           "jsonlint",
           "luacheck",
           "markdownlint",
-          "prettier",
           "pylint",
           "shfmt",
           "stylelint",
