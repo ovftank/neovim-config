@@ -10,7 +10,6 @@ return {
       "L3MON4D3/LuaSnip",
       "saadparwaiz1/cmp_luasnip",
       "onsails/lspkind.nvim",
-      "luckasRanarison/tailwind-tools.nvim",
       "Exafunction/windsurf.nvim",
     },
     config = function()
@@ -38,11 +37,9 @@ return {
         formatting = {
           format = function(entry, vim_item)
             local lspkind_ok, lspkind = pcall(require, "lspkind")
-            local tailwind_ok, tailwind_cmp = pcall(require, "tailwind-tools.cmp")
 
-            if lspkind_ok and tailwind_ok then
+            if lspkind_ok then
               vim_item = lspkind.cmp_format({
-                before = tailwind_cmp.lspkind_format,
                 mode = "symbol_text",
                 maxwidth = 50,
                 ellipsis_char = "...",

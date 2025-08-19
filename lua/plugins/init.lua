@@ -16,10 +16,8 @@ return {
   require("plugins.nvim-dap"),
   require("plugins.nvim-lint"),
   require("plugins.nvim-web-devicons"),
-  require("plugins.tailwind-tools"),
   require("plugins.telescope"),
   require("plugins.toggleterm"),
   require("plugins.treesitter"),
-  require("plugins.ufo"),
   require("plugins.wakatime"),
 }
