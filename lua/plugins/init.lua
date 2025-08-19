@@ -2,6 +2,7 @@ return {
   require("plugins.autopairs"),
   require("plugins.barbar"),
   require("plugins.cmp"),
+  require("plugins.colorizer"),
   require("plugins.colorscheme"),
   require("plugins.comment"),
   require("plugins.conform"),

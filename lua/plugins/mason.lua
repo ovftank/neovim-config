@@ -247,6 +247,25 @@ return {
                 }
               }
             }
+          },
+          init_options = {
+            userLanguages = {
+              html = "html",
+              css = "css",
+              javascript = "javascript",
+              typescript = "typescript",
+              vue = "vue"
+            }
+          },
+          capabilities = {
+            completion = {
+              completionItem = {
+                snippetSupport = true,
+                resolveSupport = {
+                  properties = { "documentation", "detail", "additionalTextEdits" }
+                }
+              }
+            }
           }
         },
         jsonls = {

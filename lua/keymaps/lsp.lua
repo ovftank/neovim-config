@@ -23,7 +23,15 @@ end
 
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-  callback = setup_lsp_keymaps,
+  callback = function(ev)
+    setup_lsp_keymaps(ev)
+    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+    if client and client.name == "tailwindcss" then
+      client.server_capabilities.completionProvider.triggerCharacters = {
+        '"', "'", "`", ".", "(", "[", "!", "/", ":", "-"
+      }
+    end
+  end,
 })
 
 return M

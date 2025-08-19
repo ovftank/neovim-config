@@ -11,6 +11,7 @@ return {
       "saadparwaiz1/cmp_luasnip",
       "onsails/lspkind.nvim",
       "Exafunction/windsurf.nvim",
+      "roobert/tailwindcss-colorizer-cmp.nvim",
     },
     config = function()
       local cmp = require("cmp")
@@ -18,6 +19,11 @@ return {
       local keymaps = require("keymaps.cmp")
 
       require("luasnip.loaders.from_lua").load({ paths = "./snippets" })
+
+      require("tailwindcss-colorizer-cmp").setup({
+        color_square_width = 2,
+      })
+
       cmp.setup({
         snippet = {
           expand = function(args)
@@ -25,8 +31,13 @@ return {
           end,
         },
         mapping = keymaps.get_cmp_mappings(),
+        matching = {
+          disallow_fuzzy_matching = false,
+          disallow_partial_matching = false,
+          disallow_prefix_unmatching = false,
+        },
         sources = cmp.config.sources({
-          { name = "nvim_lsp", priority = 1000, max_item_count = 20 },
+          { name = "nvim_lsp", priority = 1000, max_item_count = 20, keyword_length = 2 },
           { name = "luasnip",  priority = 900 },
           { name = "codeium",  priority = 950 },
         }, {
@@ -34,10 +45,16 @@ return {
           { name = "path",   priority = 400 },
           { name = "calc",   priority = 300 },
         }),
+        experimental = {
+          ghost_text = false,
+        },
         formatting = {
           format = function(entry, vim_item)
+            local colorizer_ok, colorizer = pcall(require, "tailwindcss-colorizer-cmp")
+            if colorizer_ok then
+              return colorizer.formatter(entry, vim_item)
+            end
             local lspkind_ok, lspkind = pcall(require, "lspkind")
-
             if lspkind_ok then
               vim_item = lspkind.cmp_format({
                 mode = "symbol_text",
