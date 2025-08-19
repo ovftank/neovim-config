@@ -16,6 +16,12 @@ return {
       enable_diagnostics = true,
       open_files_do_not_replace_types = { "terminal", "trouble", "qf" },
       sort_case_insensitive = false,
+      event_handlers = {
+        {
+          event = "neo_tree_popup_input_ready",
+          handler = keymaps.handle_popup_input,
+        },
+      },
       default_component_configs = {
         container = {
           enable_character_fade = true,

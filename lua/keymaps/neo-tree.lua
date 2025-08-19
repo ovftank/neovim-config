@@ -1,15 +1,21 @@
 local keymap = vim.keymap
 
-keymap.set({ "n", "i", "v", "x", "s", "o", "t", "c" }, "<C-b>", "<cmd>Neotree toggle<cr>", { desc = "toggle tree" })
-keymap.set({ "n", "i", "v", "x", "s", "o", "t", "c" }, "<C-S-b>", "<cmd>Neotree reveal<cr>", { desc = "reveal file" })
+keymap.set({ "n", "i", "v", "x", "s", "o", "t", "c" }, "<C-b>", "<cmd>Neotree toggle<CR>", { desc = "toggle tree" })
+keymap.set({ "n", "i", "v", "x", "s", "o", "t", "c" }, "<C-S-b>", "<cmd>Neotree reveal<CR>", { desc = "reveal file" })
 
 local M = {}
 
+M.handle_popup_input = function(args)
+  vim.keymap.set("i", "<C-BS>", function()
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-w>", true, true, true), "i", true)
+  end, { noremap = true, buffer = args.bufnr })
+end
+
 M.window_mappings = {
   ["<2-LeftMouse>"] = "open",
-  ["<cr>"] = "open",
-  ["<esc>"] = "cancel",
-  ["<c-b>"] = "close_window",
+  ["<CR>"] = "open",
+  ["<ESC>"] = "cancel",
+  ["<C-b>"] = "close_window",
   ["<c-n>"] = {
     "add",
     config = {
@@ -28,22 +34,12 @@ M.window_mappings = {
 }
 
 M.filesystem_mappings = {
+  ["<C-b>"] = "close_window",
   ["<bs>"] = "navigate_up",
   ["."] = "set_root",
   ["<C-h>"] = "toggle_hidden",
   ["/"] = "fuzzy_finder",
 }
 
-M.buffers_mappings = {
-  ["<c-b>"] = "close_window",
-  ["<del>"] = "delete_buffer",
-  ["<cr>"] = "open",
-}
-
-M.git_status_mappings = {
-  ["<c-b>"] = "close_window",
-  ["<del>"] = "delete_buffer",
-  ["<cr>"] = "open",
-}
 
 return M
