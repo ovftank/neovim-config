@@ -32,7 +32,7 @@ return {
           "tailwindcss",
           "ts_ls",
         },
-        automatic_enable = true,
+        automatic_enable = false,
       })
 
       local lspconfig = require("lspconfig")
@@ -114,10 +114,25 @@ return {
           },
         },
         ts_ls = {
-          filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
+          filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "jsconfig.json", "tsconfig.json" },
           init_options = {
+            hostInfo = "neovim",
             preferences = {
               disableSuggestions = false,
+              includeCompletionsForModuleExports = true,
+              includeCompletionsForImportStatements = true,
+              importModuleSpecifierPreference = "non-relative",
+              importModuleSpecifierEnding = "auto",
+              includePackageJsonAutoImports = "auto",
+              allowIncompleteCompletions = true,
+              includeCompletionsWithSnippetText = true,
+              includeCompletionsWithInsertText = true,
+              includeAutomaticOptionalChainCompletions = true,
+              includeCompletionsWithClassMemberSnippets = true,
+              includeCompletionsWithObjectLiteralMethodSnippets = true,
+              useLabelDetailsInCompletionEntries = true,
+              jsxAttributeCompletionStyle = "auto",
+              interactiveInlayHints = true,
             }
           },
           settings = {
@@ -131,22 +146,6 @@ return {
                 includeInlayPropertyDeclarationTypeHints = true,
                 includeInlayFunctionLikeReturnTypeHints = true,
                 includeInlayEnumMemberValueHints = true,
-              },
-              preferences = {
-                importModuleSpecifierPreference = "non-relative",
-                importModuleSpecifierEnding = "auto",
-                includePackageJsonAutoImports = "auto",
-                allowIncompleteCompletions = true,
-                includeCompletionsForModuleExports = true,
-                includeCompletionsForImportStatements = true,
-                includeCompletionsWithSnippetText = true,
-                includeCompletionsWithInsertText = true,
-                includeAutomaticOptionalChainCompletions = true,
-                includeCompletionsWithClassMemberSnippets = true,
-                includeCompletionsWithObjectLiteralMethodSnippets = true,
-                useLabelDetailsInCompletionEntries = true,
-                jsxAttributeCompletionStyle = "auto",
-                interactiveInlayHints = true,
               },
               completions = {
                 completeFunctionCalls = true,
@@ -164,22 +163,6 @@ return {
                 includeInlayPropertyDeclarationTypeHints = true,
                 includeInlayFunctionLikeReturnTypeHints = true,
                 includeInlayEnumMemberValueHints = true,
-              },
-              preferences = {
-                importModuleSpecifierPreference = "non-relative",
-                importModuleSpecifierEnding = "auto",
-                includePackageJsonAutoImports = "auto",
-                allowIncompleteCompletions = true,
-                includeCompletionsForModuleExports = true,
-                includeCompletionsForImportStatements = true,
-                includeCompletionsWithSnippetText = true,
-                includeCompletionsWithInsertText = true,
-                includeAutomaticOptionalChainCompletions = true,
-                includeCompletionsWithClassMemberSnippets = true,
-                includeCompletionsWithObjectLiteralMethodSnippets = true,
-                useLabelDetailsInCompletionEntries = true,
-                jsxAttributeCompletionStyle = "auto",
-                interactiveInlayHints = true,
               },
               completions = {
                 completeFunctionCalls = true,
@@ -280,7 +263,7 @@ return {
             json = {
               format = {
                 enable = true,
-                tabSize = 2,
+                tabSize = 4,
                 insertSpaces = true,
                 keepLines = false
               },
