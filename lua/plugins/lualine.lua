@@ -23,8 +23,18 @@ return {
     sections = {
       lualine_a = { "mode" },
       lualine_b = {
-        "branch",
-        "diff",
+        {
+          "branch",
+          on_click = function()
+            require("telescope.builtin").git_branches()
+          end,
+        },
+        {
+          "diff",
+          on_click = function()
+            require("gitsigns").diffthis()
+          end,
+        },
         {
           "diagnostics",
           sources = { "nvim_diagnostic" },

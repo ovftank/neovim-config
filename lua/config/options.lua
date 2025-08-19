@@ -27,7 +27,7 @@ vim.opt.cmdheight = 1
 vim.opt.pumheight = 10
 vim.opt.lazyredraw = true
 
-vim.opt.completeopt = "menu,menuone,noselect"
+vim.opt.completeopt = "menu,menuone,noinsert,noselect"
 
 vim.opt.mouse = "a"
 vim.opt.mousemoveevent = true

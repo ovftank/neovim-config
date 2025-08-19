@@ -27,10 +27,11 @@ keymap.set("i", "<C-S-z>", "<Esc><C-r>i", { desc = "redo" })
 keymap.set("v", "<C-S-z>", "<Esc><C-r>", { desc = "redo" })
 
 keymap.set("s", "<BS>", "<C-g>c", { desc = "del selection" })
-keymap.set("v", "<BS>", "d", { desc = "del text" })
+keymap.set("v", "<BS>", "di", { desc = "del text" })
 
 keymap.set("i", "<C-BS>", "<C-w>", { desc = "del word" })
-keymap.set("i", "<C-h>", "<C-w>", { desc = "del word alt" })
+keymap.set("n", "<C-BS>", "<C-w>", { desc = "del word" })
+keymap.set("c", "<C-BS>", "<C-w>", { desc = "del word" })
 
 keymap.set("n", "<C-u>", "dd", { desc = "del line" })
 keymap.set("i", "<C-u>", "<Esc>ddi", { desc = "del line" })

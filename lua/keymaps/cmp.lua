@@ -1,5 +1,10 @@
 local M = {}
 
+local has_words_before = function()
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
+
 function M.get_cmp_mappings()
   local cmp = require("cmp")
 
@@ -29,12 +34,46 @@ function M.get_cmp_mappings()
         fallback()
       end
     end, { "i", "s" }),
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif has_words_before() then
+        cmp.complete()
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      else
+        fallback()
+      end
+    end, { "i", "s" })
   })
 end
 
 function M.get_cmp_cmdline_mappings()
   local cmp = require("cmp")
   return cmp.mapping.preset.cmdline({
+    ["<CR>"] = {
+      c = function(fallback)
+        if cmp.visible() then
+          cmp.confirm({ select = true })
+        else
+          fallback()
+        end
+      end,
+    },
+    ["<C-Space>"] = {
+      c = function()
+        if cmp.visible() then
+          cmp.close()
+        else
+          cmp.complete()
+        end
+      end,
+    },
     ["<Up>"] = {
       c = function()
         if cmp.visible() then
@@ -48,6 +87,24 @@ function M.get_cmp_cmdline_mappings()
       c = function()
         if cmp.visible() then
           cmp.select_next_item()
+        else
+          cmp.complete()
+        end
+      end,
+    },
+    ["<Tab>"] = {
+      c = function()
+        if cmp.visible() then
+          cmp.select_next_item()
+        else
+          cmp.complete()
+        end
+      end,
+    },
+    ["<S-Tab>"] = {
+      c = function()
+        if cmp.visible() then
+          cmp.select_prev_item()
         else
           cmp.complete()
         end

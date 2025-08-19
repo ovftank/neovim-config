@@ -11,6 +11,7 @@ return {
       "saadparwaiz1/cmp_luasnip",
       "onsails/lspkind.nvim",
       "luckasRanarison/tailwind-tools.nvim",
+      "Exafunction/windsurf.nvim",
     },
     config = function()
       local cmp = require("cmp")
@@ -25,12 +26,10 @@ return {
           end,
         },
         mapping = keymaps.get_cmp_mappings(),
-        completion = {
-          completeopt = "menu,menuone,noinsert,noselect",
-        },
         sources = cmp.config.sources({
           { name = "nvim_lsp", priority = 1000, max_item_count = 20 },
           { name = "luasnip",  priority = 900 },
+          { name = "codeium",  priority = 950 },
         }, {
           { name = "buffer", priority = 500 },
           { name = "path",   priority = 400 },
@@ -73,12 +72,14 @@ return {
                   Event = "",
                   Operator = "󰆕",
                   TypeParameter = "",
+                  Codeium = "󰚩",
                 },
               })(entry, vim_item)
             else
               vim_item.menu = ({
                 nvim_lsp = "[LSP]",
                 luasnip = "[LuaSnip]",
+                codeium = "[Codeium]",
                 buffer = "[Buffer]",
                 path = "[Path]",
                 calc = "[Calc]",
@@ -106,6 +107,23 @@ return {
           { name = "cmdline" }
         }),
         matching = { disallow_symbol_nonprefix_matching = false }
+      })
+
+      require("codeium").setup({
+        enable_cmp_source = true,
+        enable_chat = false,
+        virtual_text = {
+          enabled = false,
+        },
+        workspace_root = {
+          use_lsp = true,
+          paths = {
+            ".git",
+            "package.json",
+            "go.mod",
+            "requirements.txt",
+          }
+        }
       })
     end,
   },

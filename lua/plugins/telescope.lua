@@ -11,8 +11,8 @@ return {
 
       telescope.setup({
         defaults = {
-          prompt_prefix = "  ",
-          selection_caret = "  ",
+          prompt_prefix = "󰍉 ",
+          selection_caret = "▶ ",
           path_display = { "truncate" },
           color_devicons = true,
           file_ignore_patterns = {
