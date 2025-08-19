@@ -1,6 +1,6 @@
 local keymap = vim.keymap
 
-keymap.set({ "n", "v", "i" }, "<C-s>", "<Esc>:w!<CR>", { desc = "save" })
+keymap.set({ "n", "v", "i" }, "<C-s>", "<Esc>:w<CR>", { desc = "save" })
 
 keymap.set("v", "<C-c>", [["+y]], { desc = "copy" })
 keymap.set("c", "<C-v>", '<C-r>+', { desc = "paste" })
@@ -49,9 +49,18 @@ keymap.set("n", "N", "Nzzzv", { desc = "prev search" })
 
 keymap.set("n", "<Space>", ":set relativenumber!<CR>", { desc = "toggle relnum", silent = true })
 
+keymap.set("n", "<M-z>", ":set wrap!<CR>", { desc = "toggle line wrap", silent = true })
+
 keymap.set("n", "<C-<>", "<<", { desc = "indent left" })
 keymap.set("n", "<C->>", ">>", { desc = "indent right" })
 keymap.set("v", "<C-<>", "<gv", { desc = "indent left" })
 keymap.set("v", "<C->>", ">gv", { desc = "indent right" })
 keymap.set("i", "<C-<>", "<C-d>", { desc = "indent left" })
 keymap.set("i", "<C->>", "<C-t>", { desc = "indent right" })
+
+keymap.set("n", "<C-Left>", "b", { desc = "word start left" })
+keymap.set("n", "<C-Right>", "w", { desc = "word end right" })
+keymap.set("i", "<C-Left>", "<C-o>b", { desc = "word start left" })
+keymap.set("i", "<C-Right>", "<C-o>w", { desc = "word end right" })
+keymap.set("v", "<C-Left>", "b", { desc = "word start left" })
+keymap.set("v", "<C-Right>", "w", { desc = "word end right" })

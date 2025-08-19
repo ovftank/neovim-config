@@ -4,8 +4,6 @@ local keymap = vim.keymap
 
 local function setup_lsp_keymaps(ev)
   local opts = { buffer = ev.buf }
-
-  keymap.set("n", "<C-K>", vim.lsp.buf.hover, vim.tbl_extend("force", opts, { desc = "hover" }))
   keymap.set("n", "<F2>", vim.lsp.buf.rename, vim.tbl_extend("force", opts, { desc = "rename" }))
 
   keymap.set({ "n", "v" }, "<C-.>", vim.lsp.buf.code_action, vim.tbl_extend("force", opts, { desc = "code actions" }))
