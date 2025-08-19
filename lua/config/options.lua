@@ -32,10 +32,20 @@ vim.opt.completeopt = "menu,menuone,noinsert,noselect"
 vim.opt.mouse = "a"
 vim.opt.mousemoveevent = true
 
-vim.opt.foldcolumn = "1"
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldtext = "v:lua.vim.treesitter.foldtext()"
+vim.opt.foldcolumn = "auto:9"
 vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = 99
 vim.opt.foldenable = true
+vim.opt.foldnestmax = 20
+
+vim.opt.fillchars = vim.opt.fillchars + {
+    foldopen = "▼",
+    foldclose = "▶",
+    foldsep = " ",
+}
 
 vim.lsp.inlay_hint.enable(true, nil)
 
