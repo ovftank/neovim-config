@@ -23,7 +23,7 @@ autocmd("BufWritePre", {
 local tailwind_group = augroup("TailwindAutoSort", { clear = true })
 autocmd("BufWritePre", {
   group = tailwind_group,
-  pattern = { "*.html", "*.css", "*.js", "*.jsx", "*.ts", "*.tsx", "*.vue", "*.svelte", "*.astro", "*.php" },
+  pattern = { "*.html", "*.css", "*.js", "*.jsx", "*.ts", "*.tsx", "*.vue", "*.astro", "*.php" },
   desc = "sort tailwind",
   callback = function()
     if pcall(require, "tailwind-tools") then

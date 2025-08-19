@@ -185,7 +185,7 @@ return {
         },
         cssls = {},
         emmet_language_server = {
-          filetypes = { "html", "css", "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "svelte" },
+          filetypes = { "html", "css", "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
           init_options = {
             includeLanguages = {},
             excludeLanguages = {},
@@ -207,7 +207,6 @@ return {
                 javascript = "javascript",
                 typescript = "typescript",
                 vue = "vue",
-                svelte = "html",
                 astro = "html",
                 jsx = "javascriptreact",
                 tsx = "typescriptreact",

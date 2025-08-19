@@ -1,5 +1,8 @@
 # Neovim for Windows
 
+<a href="https://dotfyle.com/ovftank/neovim-config"><img src="https://dotfyle.com/ovftank/neovim-config/badges/plugins?style=flat" /></a>
+<a href="https://dotfyle.com/ovftank/neovim-config"><img src="https://dotfyle.com/ovftank/neovim-config/badges/plugin-manager?style=flat" /></a>
+
 ## Quick Setup
 
 Run this command in PowerShell as Administrator:
@@ -317,6 +320,10 @@ This configuration has been customized for easier use by beginners:
 <td>Toggle relative line numbers</td>
 </tr>
 <tr>
+<td><kbd>Alt+Z</kbd></td>
+<td>Toggle line wrap</td>
+</tr>
+<tr>
 <td><kbd>Ctrl+[</kbd></td>
 <td>Indent left</td>
 </tr>
@@ -461,10 +468,6 @@ This configuration has been customized for easier use by beginners:
 <tr>
 <th>Key</th>
 <th>Action</th>
-</tr>
-<tr>
-<td><kbd>Ctrl+K</kbd></td>
-<td>Show hover information</td>
 </tr>
 <tr>
 <td><kbd>F2</kbd></td>
