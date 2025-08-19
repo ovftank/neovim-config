@@ -25,6 +25,9 @@ return {
           end,
         },
         mapping = keymaps.get_cmp_mappings(),
+        completion = {
+          completeopt = "menu,menuone,noinsert,noselect",
+        },
         sources = cmp.config.sources({
           { name = "nvim_lsp", priority = 1000, max_item_count = 20 },
           { name = "luasnip",  priority = 900 },

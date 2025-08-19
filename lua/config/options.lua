@@ -32,5 +32,12 @@ vim.opt.completeopt = "menu,menuone,noselect"
 vim.opt.mouse = "a"
 vim.opt.mousemoveevent = true
 
+vim.opt.foldcolumn = "1"
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
+vim.opt.foldenable = true
+
+vim.lsp.inlay_hint.enable(true, nil)
+
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1

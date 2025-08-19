@@ -42,6 +42,9 @@ return {
       lualine_x = {
         {
           function()
+            if vim.bo.filetype == "neo-tree" then
+              return ""
+            end
             local ok, dap = pcall(require, "dap")
             ---@diagnostic disable-next-line: undefined-field
             if ok and dap.session() ~= nil then
@@ -51,6 +54,9 @@ return {
             end
           end,
           on_click = function()
+            if vim.bo.filetype == "neo-tree" then
+              return
+            end
             local ok, dap = pcall(require, "dap")
             if ok then
               ---@diagnostic disable-next-line: undefined-field
@@ -58,6 +64,9 @@ return {
             end
           end,
           color = function()
+            if vim.bo.filetype == "neo-tree" then
+              return {}
+            end
             local ok, dap = pcall(require, "dap")
             ---@diagnostic disable-next-line: undefined-field
             if ok and dap.session() ~= nil then
@@ -69,6 +78,9 @@ return {
         },
         {
           function()
+            if vim.bo.filetype == "neo-tree" then
+              return ""
+            end
             local ok, dap = pcall(require, "dap")
             ---@diagnostic disable-next-line: undefined-field
             if ok and dap.session() ~= nil then
@@ -78,6 +90,9 @@ return {
             end
           end,
           on_click = function()
+            if vim.bo.filetype == "neo-tree" then
+              return
+            end
             local ok, dap = pcall(require, "dap")
             if ok then
               ---@diagnostic disable-next-line: undefined-field
@@ -88,6 +103,9 @@ return {
         },
         {
           function()
+            if vim.bo.filetype == "neo-tree" then
+              return ""
+            end
             local ok, dap = pcall(require, "dap")
             ---@diagnostic disable-next-line: undefined-field
             if ok and dap.session() ~= nil then
@@ -97,6 +115,9 @@ return {
             end
           end,
           on_click = function()
+            if vim.bo.filetype == "neo-tree" then
+              return
+            end
             local ok, dap = pcall(require, "dap")
             if ok then
               ---@diagnostic disable-next-line: undefined-field

@@ -437,10 +437,6 @@ This configuration has been customized for easier use by beginners:
 <td>Search in current file</td>
 </tr>
 <tr>
-<td><kbd>Ctrl+R</kbd></td>
-<td>Find references</td>
-</tr>
-<tr>
 <td><kbd>F1</kbd></td>
 <td>Go to definition</td>
 </tr>
@@ -481,6 +477,19 @@ This configuration has been customized for easier use by beginners:
 <tr>
 <td><kbd>Ctrl+Shift+I</kbd></td>
 <td>Format code</td>
+</tr>
+</table>
+
+### Debug (DAP)
+
+<table>
+<tr>
+<th>Key</th>
+<th>Action</th>
+</tr>
+<tr>
+<td><kbd>F9</kbd></td>
+<td>Toggle breakpoint</td>
 </tr>
 </table>
 

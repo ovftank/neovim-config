@@ -1,16 +1,5 @@
 local keymap = vim.keymap
 
-local function close_buffer()
-  local buffers = vim.fn.getbufinfo({ buflisted = 1 })
-  local valid_buffers = {}
-  for _, buf in ipairs(buffers) do
-    if buf.name ~= "" and vim.fn.filereadable(buf.name) == 1 then
-      table.insert(valid_buffers, buf)
-    end
-  end
-  vim.cmd('BufferClose')
-end
-
 keymap.set('n', '<C-Tab>', '<Cmd>BufferNext<CR>', { desc = 'next tab' })
 keymap.set('n', '<C-S-Tab>', '<Cmd>BufferPrevious<CR>', { desc = 'prev tab' })
 
@@ -24,4 +13,7 @@ keymap.set('n', '<C-7>', '<Cmd>BufferGoto 7<CR>', { desc = 'tab 7' })
 keymap.set('n', '<C-8>', '<Cmd>BufferGoto 8<CR>', { desc = 'tab 8' })
 keymap.set('n', '<C-9>', '<Cmd>BufferGoto 9<CR>', { desc = 'tab 9' })
 
-keymap.set('n', '<C-w>', close_buffer, { desc = 'close tab' })
+keymap.set('n', '<C-w>', '<Cmd>BufferClose<CR>', {
+  nowait = true,
+  desc = 'close tab'
+})

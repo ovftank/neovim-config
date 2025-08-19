@@ -22,21 +22,26 @@ return {
     config = function()
       require("mason-lspconfig").setup({
         ensure_installed = {
-          "lua_ls",
-          "pyright",
-          "ts_ls",
+          "basedpyright",
+          "cssls",
+          "emmet_language_server",
           "eslint",
           "html",
-          "cssls",
-          "tailwindcss",
           "jsonls",
-          "emmet_language_server",
+          "lua_ls",
+          "tailwindcss",
+          "ts_ls",
         },
         automatic_enable = true,
       })
 
       local lspconfig = require("lspconfig")
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+      capabilities.textDocument.foldingRange = {
+        dynamicRegistration = false,
+        lineFoldingOnly = true
+      }
 
       capabilities.offsetEncoding = { "utf-16" }
 
@@ -75,16 +80,113 @@ return {
               },
               completion = { callSnippet = "Replace" },
               diagnostics = { globals = { "vim" } },
+              hint = {
+                enable = true,
+              },
             },
           },
         },
-        pyright = {},
+        basedpyright = {
+          cmd = { "basedpyright-langserver", "--stdio" },
+          filetypes = { "python" },
+          root_markers = { "requirements.txt", ".git" },
+          settings = {
+            basedpyright = {
+              analysis = {
+                autoSearchPaths = true,
+                diagnosticMode = "openFilesOnly",
+                useLibraryCodeForTypes = true,
+                typeCheckingMode = "recommended",
+                failOnWarnings = false,
+                autoImportCompletions = true,
+                inlayHints = {
+                  variableTypes = true,
+                  callArgumentNames = true,
+                  callArgumentNamesMatching = true,
+                  functionReturnTypes = true,
+                  genericTypes = true,
+                },
+                useTypingExtensions = true,
+                fileEnumerationTimeout = 10,
+                autoFormatStrings = true,
+              },
+            },
+          },
+        },
         ts_ls = {
           filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
           init_options = {
             preferences = {
               disableSuggestions = false,
             }
+          },
+          settings = {
+            typescript = {
+              inlayHints = {
+                includeInlayParameterNameHints = "all",
+                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayVariableTypeHints = true,
+                includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayEnumMemberValueHints = true,
+              },
+              preferences = {
+                importModuleSpecifierPreference = "non-relative",
+                importModuleSpecifierEnding = "auto",
+                includePackageJsonAutoImports = "auto",
+                allowIncompleteCompletions = true,
+                includeCompletionsForModuleExports = true,
+                includeCompletionsForImportStatements = true,
+                includeCompletionsWithSnippetText = true,
+                includeCompletionsWithInsertText = true,
+                includeAutomaticOptionalChainCompletions = true,
+                includeCompletionsWithClassMemberSnippets = true,
+                includeCompletionsWithObjectLiteralMethodSnippets = true,
+                useLabelDetailsInCompletionEntries = true,
+                jsxAttributeCompletionStyle = "auto",
+                interactiveInlayHints = true,
+              },
+              completions = {
+                completeFunctionCalls = true,
+              },
+              implementationsCodeLens = { enabled = true },
+              referencesCodeLens = { enabled = true, showOnAllFunctions = true },
+            },
+            javascript = {
+              inlayHints = {
+                includeInlayParameterNameHints = "all",
+                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayVariableTypeHints = true,
+                includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayEnumMemberValueHints = true,
+              },
+              preferences = {
+                importModuleSpecifierPreference = "non-relative",
+                importModuleSpecifierEnding = "auto",
+                includePackageJsonAutoImports = "auto",
+                allowIncompleteCompletions = true,
+                includeCompletionsForModuleExports = true,
+                includeCompletionsForImportStatements = true,
+                includeCompletionsWithSnippetText = true,
+                includeCompletionsWithInsertText = true,
+                includeAutomaticOptionalChainCompletions = true,
+                includeCompletionsWithClassMemberSnippets = true,
+                includeCompletionsWithObjectLiteralMethodSnippets = true,
+                useLabelDetailsInCompletionEntries = true,
+                jsxAttributeCompletionStyle = "auto",
+                interactiveInlayHints = true,
+              },
+              completions = {
+                completeFunctionCalls = true,
+              },
+              implementationsCodeLens = { enabled = true },
+              referencesCodeLens = { enabled = true, showOnAllFunctions = true },
+            },
           },
         },
         html = {
@@ -115,39 +217,165 @@ return {
         },
         tailwindcss = {
           filetypes = { "html", "css", "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
+          settings = {
+            tailwindCSS = {
+              includeLanguages = {
+                html = "html",
+                javascript = "javascript",
+                typescript = "typescript",
+                vue = "vue",
+                svelte = "html",
+                astro = "html",
+                jsx = "javascriptreact",
+                tsx = "typescriptreact",
+              },
+              classAttributes = {
+                "class",
+                "className",
+                "ngClass",
+                "class:list",
+                ":class",
+                "v-bind:class",
+                "x-bind:class"
+              },
+              colorDecorators = true,
+              showPixelEquivalents = true,
+              rootFontSize = 16,
+              hovers = true,
+              suggestions = true,
+              codeActions = true,
+              validate = true,
+              lint = {
+                invalidScreen = "error",
+                invalidVariant = "error",
+                invalidTailwindDirective = "error",
+                invalidApply = "error",
+                invalidConfigPath = "error",
+                cssConflict = "warning",
+                recommendedVariantOrder = "warning",
+                usedBlocklistedClass = "warning"
+              },
+              emmetCompletions = true,
+              files = {
+                exclude = {
+                  "**/.git/**",
+                  "**/node_modules/**",
+                  "**/.hg/**",
+                  "**/.svn/**"
+                }
+              }
+            }
+          }
         },
-        jsonls = {},
+        jsonls = {
+          filetypes = { "json", "jsonc" },
+          init_options = {
+            provideFormatter = true,
+            validate = true,
+            allowComments = true,
+            allowTrailingCommas = true,
+            allowArbitraryComments = true
+          },
+          settings = {
+            json = {
+              format = {
+                enable = true,
+                tabSize = 2,
+                insertSpaces = true,
+                keepLines = false
+              },
+              schemas = {
+                {
+                  fileMatch = { "tsconfig.json", "tsconfig.*.json" },
+                  url = "https://www.schemastore.org/tsconfig"
+                },
+                {
+                  fileMatch = { "package.json" },
+                  url = "https://www.schemastore.org/package"
+                },
+                {
+                  fileMatch = { "electron-builder.json" },
+                  url = "https://www.schemastore.org/electron-builder.json"
+                },
+                {
+                  fileMatch = { ".github/workflows/*.yml", ".github/workflows/*.yaml" },
+                  url =
+                  "https://raw.githubusercontent.com/typesafegithub/github-actions-typing/refs/heads/schema-latest/github-actions-typing.schema.json"
+                },
+                {
+                  fileMatch = { "jsconfig.json" },
+                  url = "https://www.schemastore.org/jsconfig"
+                },
+                {
+                  fileMatch = { "eslint.config.json", ".eslintrc.json" },
+                  url = "https://www.schemastore.org/eslintrc"
+                },
+                {
+                  fileMatch = { ".prettierrc.json", "prettier.config.json" },
+                  url = "https://www.schemastore.org/prettierrc.json"
+                },
+                {
+                  fileMatch = { "next.config.json" },
+                  url = "https://www.schemastore.org/next"
+                }
+              },
+              validate = {
+                enable = true,
+                allowComments = true,
+                allowTrailingCommas = true,
+                allowArbitraryComments = true
+              },
+              allowComments = true,
+              allowTrailingCommas = true,
+              allowArbitraryComments = true,
+              suggest = {
+                includeDefaultValuePropertySnippets = true,
+                includeEnumValueCompletions = true
+              },
+              completion = {
+                includeDefaultValuePropertySnippets = true,
+                includeEnumValueCompletions = true
+              },
+              experimental = {
+                enableProjectReferences = true
+              }
+            }
+          }
+        },
         eslint = {
           settings = {
-            packageManager = "pnpm",
-            useESLintClass = true,
-            experimental = {
-              useFlatConfig = false
+            codeAction = {
+              disableRuleComment = {
+                enable = true,
+                location = "separateLine"
+              },
+              showDocumentation = {
+                enable = true
+              }
             },
             codeActionOnSave = {
               enable = true,
               mode = "all"
             },
+            experimental = {
+              useFlatConfig = false
+            },
             format = true,
-            quiet = false,
+            nodePath = "",
             onIgnoredFiles = "off",
-            rulesCustomizations = {},
-            run = "onType",
             problems = {
               shortenToSingleLine = false
             },
-            nodePath = "",
+            quiet = false,
+            rulesCustomizations = {},
+            run = "onType",
+            useESLintClass = true,
+            validate = "always",
             workingDirectory = {
-              mode = "location"
-            }
+              mode = "auto"
+            },
+            packageManager = "pnpm"
           },
-          on_attach = function(client, bufnr)
-            on_attach(client, bufnr)
-            vim.api.nvim_create_autocmd("BufWritePre", {
-              buffer = bufnr,
-              command = "EslintFixAll",
-            })
-          end,
         },
       }
 
@@ -168,21 +396,24 @@ return {
     config = function()
       require("mason-tool-installer").setup({
         ensure_installed = {
-          "prettier",
-          "stylua",
-          "isort",
-          "pylint",
-          "eslint_d",
           "autopep8",
-          "luacheck",
-          "jsonlint",
-          "yamllint",
-          "stylelint",
-          "htmlhint",
-          "markdownlint",
+          "basedpyright",
           "debugpy",
+          "eslint_d",
+          "htmlhint",
+          "isort",
           "js-debug-adapter",
-          "vscode-langservers-extracted"
+          "jsonlint",
+          "luacheck",
+          "markdownlint",
+          "prettier",
+          "pylint",
+          "shfmt",
+          "stylelint",
+          "stylua",
+          "vscode-langservers-extracted",
+          "yamllint",
+          "prettierd"
         },
         auto_update = true,
         run_on_start = true,

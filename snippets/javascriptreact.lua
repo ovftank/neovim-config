@@ -17,23 +17,31 @@ return {
     t("const "),
     f(get_filename, {}),
     t(" = () => {"),
-    t({"", "\treturn ("}),
-    t({"", "\t\t<>"}),
-    t({"", "\t\t\t"}),
+    t({ "", "\treturn (" }),
+    t({ "", "\t\t<>" }),
+    t({ "", "\t\t\t" }),
     i(0),
-    t({"", "\t\t</>"}),
-    t({"", "\t);"}),
-    t({"", "};"}),
-    t({"", ""}),
+    t({ "", "\t\t</>" }),
+    t({ "", "\t);" }),
+    t({ "", "};" }),
+    t({ "", "" }),
     t("export default "),
     f(get_filename, {}),
     t(";"),
   }),
-
-  s("dom-load", {
-    t("document.addEventListener('DOMContentLoaded', () => {"),
-    t({"", "\t"}),
-    i(1, "body"),
-    t({"", "});"}),
+  s("us", {
+    t("const ["),
+    i(1, "state"),
+    t(", set"),
+    f(function(args)
+      local state_name = args[1][1]
+      if state_name == "" then
+        return "State"
+      end
+      return state_name:gsub("^%l", string.upper)
+    end, { 1 }),
+    t("] = useState("),
+    i(2, ""),
+    t(");"),
   }),
 }

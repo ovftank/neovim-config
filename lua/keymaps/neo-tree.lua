@@ -40,4 +40,10 @@ M.buffers_mappings = {
   ["<cr>"] = "open",
 }
 
+M.git_status_mappings = {
+  ["<c-b>"] = "close_window",
+  ["<del>"] = "delete_buffer",
+  ["<cr>"] = "open",
+}
+
 return M

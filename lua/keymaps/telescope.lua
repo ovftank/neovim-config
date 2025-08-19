@@ -24,20 +24,21 @@ local function setup_telescope_keymaps()
         return true
       end
     })
-  end, { desc = "find files (% for grep)" })
+  end, { desc = "find files" })
 
   keymap.set({ "n", "v", "i" }, "<C-f>", function()
     if vim.fn.mode() == "i" then
       vim.cmd("stopinsert")
     end
-    builtin.current_buffer_fuzzy_find({
+    builtin.grep_string({
+      search = vim.fn.expand("<cword>"),
       attach_mappings = function(_, map)
         map("i", "<Esc>", require("telescope.actions").close)
         map("n", "<Esc>", require("telescope.actions").close)
         return true
       end
     })
-  end, { desc = "find in buffer" })
+  end, { desc = "find text in buffer" })
 
   keymap.set({ "n", "v", "i" }, "<C-q>", function()
     if vim.fn.mode() == "i" then

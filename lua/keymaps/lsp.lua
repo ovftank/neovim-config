@@ -10,8 +10,17 @@ local function setup_lsp_keymaps(ev)
 
   keymap.set({ "n", "v" }, "<C-.>", vim.lsp.buf.code_action, vim.tbl_extend("force", opts, { desc = "code actions" }))
   keymap.set({ "n", "v", "i" }, "<C-S-i>", function()
+    vim.lsp.buf.code_action({
+      apply = true,
+      context = {
+        only = {
+          "source.organizeImports"
+        },
+        diagnostics = {},
+      },
+    })
     require("conform").format({ async = true, lsp_fallback = true })
-  end, vim.tbl_extend("force", opts, { desc = "format" }))
+  end, vim.tbl_extend("force", opts, { desc = "format & organize imports" }))
 end
 
 vim.api.nvim_create_autocmd("LspAttach", {

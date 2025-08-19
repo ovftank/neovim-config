@@ -1,9 +1,9 @@
-
 require("keymaps.barbar")
 require("keymaps.basic")
 require("keymaps.cmp")
 require("keymaps.comment")
 require("keymaps.debug")
+require("keymaps.emmet")
 require("keymaps.lsp")
 require("keymaps.neo-tree")
 require("keymaps.telescope")

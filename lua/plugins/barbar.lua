@@ -9,7 +9,7 @@ return {
   end,
   opts = {
     animation = true,
-    auto_hide = false,
+    auto_hide = 0,
     tabpages = true,
     clickable = true,
     focus_on_close = 'left',
@@ -17,20 +17,30 @@ return {
     highlight_alternate = false,
     highlight_inactive_file_icons = false,
     highlight_visible = true,
+
+    exclude_name = { '^$', '^\\[.*\\]$', '^\\[.*\\]\\s*$' },
+
+    sidebar_filetypes = {
+      ['neo-tree'] = { event = 'BufWipeout', text = 'neo-tree', align = 'left' },
+      NvimTree = true,
+      undotree = { text = 'undotree', align = 'center' },
+      Outline = { event = 'BufWinLeave', text = 'symbols-outline', align = 'right' },
+    },
+
     icons = {
       buffer_index = false,
       buffer_number = false,
       button = '',
       diagnostics = {
-        [vim.diagnostic.severity.ERROR] = { enabled = true, icon = '' },
-        [vim.diagnostic.severity.WARN] = { enabled = true, icon = '' },
-        [vim.diagnostic.severity.INFO] = { enabled = false },
-        [vim.diagnostic.severity.HINT] = { enabled = true, icon = '' },
+        [vim.diagnostic.severity.ERROR] = { enabled = true, icon = '󰅚 ' },
+        [vim.diagnostic.severity.WARN] = { enabled = true, icon = '󰀦 ' },
+        [vim.diagnostic.severity.INFO] = { enabled = true, icon = '󰋩 ' },
+        [vim.diagnostic.severity.HINT] = { enabled = true, icon = '󰌵 ' },
       },
       gitsigns = {
-        added = { enabled = true, icon = '+' },
-        changed = { enabled = true, icon = '~' },
-        deleted = { enabled = true, icon = '-' },
+        added = { enabled = true, icon = '󰐕 ' },
+        changed = { enabled = true, icon = '󰆓 ' },
+        deleted = { enabled = true, icon = '󰩺 ' },
       },
       filetype = {
         custom_colors = false,
@@ -51,15 +61,13 @@ return {
     maximum_length = 30,
     minimum_length = 0,
     semantic_letters = true,
-    sidebar_filetypes = {
-      ['neo-tree'] = { event = 'BufWipeout' },
-      NvimTree = true,
-      undotree = { text = 'undotree', align = 'center' },
-      Outline = { event = 'BufWinLeave', text = 'symbols-outline', align = 'right' },
-    },
+
+    insert_at_start = false,
+    insert_at_end = false,
+
     letters = 'asdfjkl;ghnmxcvbziowerutyqpASDFJKLGHNMXCVBZIOWERUTYQP',
     no_name_title = nil,
 
   },
-  version = '^1.0.0',
+  version = '1.9.1',
 }

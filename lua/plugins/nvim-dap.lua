@@ -6,7 +6,6 @@ return {
       "rcarriga/nvim-dap-ui",
       "theHamsta/nvim-dap-virtual-text",
       "jay-babu/mason-nvim-dap.nvim",
-      "mfussenegger/nvim-dap-python",
     },
     config = function()
       ---@diagnostic disable-next-line: undefined-field
@@ -109,9 +108,6 @@ return {
       vim.fn.sign_define("DapLogPoint", { text = "📝", texthl = "", linehl = "", numhl = "" })
       vim.fn.sign_define("DapStopped", { text = "➡️", texthl = "", linehl = "DapStoppedLine", numhl = "" })
       vim.fn.sign_define("DapBreakpointRejected", { text = "❌", texthl = "", linehl = "", numhl = "" })
-
-      require("dap-python").setup("python")
-
       dap.adapters["pwa-node"] = {
         type = "server",
         host = "localhost",
