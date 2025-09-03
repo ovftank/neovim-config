@@ -1,0 +1,39 @@
+{
+    "diagnostics": {
+        "disable": [
+            "different-requires"
+        ],
+        "enable": true,
+        "globals": [
+            "vim",
+            "require",
+            "lazy"
+        ],
+        "severity": {
+            "unused-local": "Error"
+        }
+    },
+    "runtime.path": [
+        "?.lua",
+        "?/init.lua",
+        "C:/tools/neovim/nvim-win64/share/nvim/runtime/lua/vim/options.lua",
+        "C:/tools/neovim/nvim-win64/share/nvim/runtime/lua/vim/_options.lua"
+    ],
+    "runtime.version": "LuaJIT",
+    "workspace": {
+        "checkThirdParty": true,
+        "library": [
+            "${3rd}/busted/library",
+            "C:/tools/neovim/nvim-win64/lib/nvim",
+            "C:/tools/neovim/nvim-win64/share/nvim/runtime/lua",
+            "C:/tools/neovim/nvim-win64/share/nvim/runtime/lua/jit",
+            "C:/tools/neovim/nvim-win64/share/nvim/runtime/lua/vim",
+            "./lua",
+            "${3rd}/luv/library",
+            "${3rd}/luassert/library"
+        ]
+    },
+    "completion": {
+        "enable": true
+    }
+}
